@@ -26,4 +26,9 @@ Siphon::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+
+  config.reserves_cas_base                = 'https://cas.library.nd.edu/cas'
+  config.reserves_cas_validate            = 'https://cas.library.nd.edu/cas/serviceValidate'
+  config.reserves_cas_logout              = 'https://cas.library.nd.edu/cas/logout'
 end

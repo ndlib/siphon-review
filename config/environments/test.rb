@@ -33,4 +33,9 @@ Siphon::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+
+  config.reserves_cas_base                = 'https://cas.library.nd.edu/cas'
+  config.reserves_cas_validate            = 'https://cas.library.nd.edu/cas/serviceValidate'
+  config.reserves_cas_logout              = 'https://cas.library.nd.edu/cas/logout'
 end

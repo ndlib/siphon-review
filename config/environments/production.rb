@@ -77,4 +77,9 @@ Siphon::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+  config.reserves_cas_base              = 'https://login.nd.edu/cas'
+  config.reserves_cas_validate          = 'https://login.nd.edu/cas/serviceValidate'
+  config.reserves_cas_logout            = 'https://login.nd.edu/cas/logout'
 end

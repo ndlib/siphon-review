@@ -27,7 +27,7 @@ gem 'nested_form'
 
 gem "paperclip"
 
-gem 'paper_trail'
+#gem 'paper_trail'
 
 
 # Deploy with Capistrano
