@@ -3,8 +3,38 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
+
+gem 'american_date'
+
+# db backends
+gem 'mysql2', "~> 0.3.11"
+
+
+# authentication
+gem 'rubycas-client'
+gem 'devise'
+gem 'devise_cas_authenticatable'
+
+
+# LDAP lookups
+gem 'net-ldap'
+
+# form generation
+gem 'simple_form'
+gem 'nested_form'
+
+gem "paperclip"
+
+gem 'paper_trail'
+
+
+# Deploy with Capistrano
+gem 'capistrano'
+
+
+gem 'exception_notification', "~> 4.0.0"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -31,6 +61,43 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+
+group :test do
+  gem 'json_spec'
+  gem 'capybara'
+  gem 'launchy', '~> 2.1.0'
+  gem 'faker'
+  gem 'selenium-webdriver'
+
+  gem 'growl'
+  gem 'growl-rspec'
+  gem 'rb-fsevent'
+    gem 'database_cleaner'
+  gem 'factory_girl', "~> 2.6.0"
+  gem 'factory_girl_rails', "~> 1.7.0"
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-coffeescript'
+  gem 'guard-rails'
+  gem 'guard-bundler'
+  gem 'guard-spork'
+  gem 'guard-shell'
+
+  gem 'vcr'
+  gem 'webmock'
+end
+
+
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pry-rails' # Debugger replacements.  Use "binding.pry" where you would use "debugger"
+  gem 'rb-readline', '~> 0.4.2' # specified to this version becase 0.5.0 was not working with pry in ruby 1.9.3
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
