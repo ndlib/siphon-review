@@ -1,0 +1,17 @@
+
+<%
+i = 0
+%>
+<div class="five columns" style="float: none; display: inline-block;">
+<% @print_slips.books.each do | book | %>
+    <%= render partial: 'slip', locals: { book: book } %>
+  </div>
+
+  <% if i % 2 %>
+    <div class="five columns page-break" style="float: none; display: inline-block; ">
+  <% else %>
+    <div class="five columns" style="float: none; display: inline-block; ">
+  <% end %>
+
+  <% i += 1 %>
+<% end %>

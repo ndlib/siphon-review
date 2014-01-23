@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926173206) do
+ActiveRecord::Schema.define(version: 20131118184300) do
+
+  create_table "reformatting_books", force: true do |t|
+    t.string "status"
+    t.string "title"
+    t.string "call_number"
+    t.string "category"
+    t.string "barcode"
+    t.string "document_number"
+    t.text   "data"
+  end
+
+  add_index "reformatting_books", ["document_number"], name: "index_reformatting_books_on_document_number", using: :btree
+  add_index "reformatting_books", ["status"], name: "index_reformatting_books_on_status", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

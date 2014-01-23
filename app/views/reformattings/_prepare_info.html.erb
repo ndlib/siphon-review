@@ -1,0 +1,34 @@
+<h3>Decisioning Informtion</h3>
+
+<dl class="dl-horizontal">
+    <dt>ND Holdings:</dt>
+    <dd><%= book_form.book.nd_holdings %>&nbsp;</dd>
+
+    <dt>Number of Loans:</dt>
+    <dd><%= book_form.book.number_of_loans %>&nbsp;</dd>
+
+    <dt>Number of Libraries:</dt>
+    <dd><%= book_form.book.number_of_libraries %>&nbsp;</dd>
+
+    <dt>Hathi Trust:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.hathi_trust_url) %>&nbsp;</dd>
+
+    <dt>Books In Print:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.books_in_print_url) %>&nbsp;</dd>
+
+    <dt>Internet Archive:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.internet_active_url) %>&nbsp;</dd>
+
+    <dt>Oclc:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.oclc_url) %>&nbsp;</dd>
+
+</dl>
+<strong>Notes For Selector:</strong>
+<%= simple_format(book_form.book.notes_from_selector) %>
+
+<% if book_form.book.status == 'prepared' %>
+    <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
+      <%= hidden_field_tag 'goto_previous_step', 1 %>
+      <%= f.submit "Go back a step" %>
+    <% end %>
+<% end %>

@@ -1,0 +1,23 @@
+<% content_for(:content_title_links) do %>
+  <%= link_to 'Print Book Slip', reformattings_print_slips_path(ids: book_form.id), class: 'btn btn-success', target: 'blank' %>
+<% end %>
+<h3>Selector Descision</h3>
+<p class="form-help">
+  Record the Selector Decision
+</p>
+<%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
+
+  <%= f.input :withdraw, as: :boolean, inline_label: 'Withdraw', label:false %>
+  <%= f.input :photodup, as: :boolean, inline_label: 'Photoduplication', label:false %>
+  <%= f.input :microfilm_nd, as: :boolean, inline_label: 'Microfilm ND', label:false %>
+  <%= f.input :digital_link, as: :boolean, inline_label: 'Digital Link', label:false %>
+  <%= f.input :purchase_reprint, as: :boolean, inline_label: 'Purchase Reprint', label:false %>
+  <%= f.input :purchase_microfilm, as: :boolean, inline_label: 'Purchase Microfilm', label:false %>
+
+  <%= f.input :fund_code %>
+
+
+  <div class="form-actions">
+    <%= f.button :submit, "Decisioned", :class => 'btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+  <h1><%= h book.title %></h1>
+  <p class="well">
+    <%= book.call_number %><br />
+    <small><%= book.barcode %></small>
+  </p>
+<%
+breadcrumb([link_to('Reformatting Books', reformattings_path), book.title])
+%>
+<p>
+  <strong>Step: </strong>
+  <span class="muted">1. Inprocess</span> -> <span class="text-success"><strong>2. Prepared</strong></span> -> 3. Decisioned -> 4. Complete
+</p>
+
