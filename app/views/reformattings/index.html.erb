@@ -1,0 +1,55 @@
+<% content_for(:content_title) do %>
+  <h1>Reformatting Books</h1>
+<% end %>
+
+<%
+breadcrumb(['Reformatting Books'])
+%>
+
+
+<div class="tabbable tabs-top">
+  <ul class="nav nav-tabs">
+    <li class="<%= @reformatting_list.tab_css_class('new') %>">
+      <%= link_to 'New', reformattings_path(status: 'new'), class: "tab #{@reformatting_list.tab_css_class('new')}" %>
+    </li>
+    <li class="<%= @reformatting_list.tab_css_class('inprocess') %>">
+      <%= link_to 'Inprocess', reformattings_path(status: 'inprocess'), class: "tab #{@reformatting_list.tab_css_class('inprocess')}" %>
+    </li>
+    <li class="<%= @reformatting_list.tab_css_class('prepared') %>">
+      <%= link_to 'Prepared', reformattings_path(status: 'prepared'), class: "tab #{@reformatting_list.tab_css_class('prepared')}" %>
+    </li>
+    <li class="<%= @reformatting_list.tab_css_class('decisioned') %>">
+      <%= link_to 'Decisioned', reformattings_path(status: 'decisioned'), class: "tab #{@reformatting_list.tab_css_class('decisioned')}" %>
+    </li>
+    <li class="<%= @reformatting_list.tab_css_class('complete') %>">
+      <%= link_to 'Completed', reformattings_path(status: 'complete'), class: "tab #{@reformatting_list.tab_css_class('complete')}" %>
+    </li>
+  </ul>
+</div>
+
+
+<table class="table table-striped find-resources datatable">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Call Number</th>
+      <th>Category</th>
+      <th>Barcode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reformatting_list.books.each do | book | %>
+      <tr>
+        <td><%= link_to book.title, edit_reformatting_path(book) %></td>
+        <td><%= book.call_number %></td>
+        <td><%= book.category %></td>
+        <td><%= book.barcode %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= form_for ReformattingBook.new, url: reformattings_path do | f | %>
+  <%= f.submit 'Create Test Book' %>
+<% end %>

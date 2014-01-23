@@ -1,0 +1,41 @@
+<h3>Selector Decision</h3>
+
+<ul class="unstyled">
+  <% if book_form.book.withdraw %>
+    <li>Chk. Withdraw</li>
+  <% end %>
+
+  <% if book_form.book.photodup %>
+    <li>Chk. Photoduplication</li>
+  <% end %>
+
+  <% if book_form.book.microfilm_nd %>
+    <li>Chk. Microfilm ND</li>
+  <% end %>
+
+  <% if book_form.book.digital_link %>
+    <li>Chk. Digital Link</li>
+  <% end %>
+
+  <% if book_form.book.purchase_reprint %>
+    <li>Chk. Purchase Reprint</li>
+  <% end %>
+
+  <% if book_form.book.purchase_microfilm %>
+    <li>Chk. Purchase Reprint</li>
+  <% end %>
+
+  <% if book_form.book.fund_code.present? %>
+    <li>Fund Code: <%= book_form.book.fund_code %></li>
+  <% end %>
+</ul>
+
+<strong>Notes From Selector</strong>
+<%= simple_format(book_form.book.notes_from_selector) %>
+
+<% if book_form.book.status == 'decisioned' %>
+  <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
+    <%= hidden_field_tag 'goto_previous_step', 1 %>
+    <%= f.submit "Go back a step" %>
+  <% end %>
+<% end %>

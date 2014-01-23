@@ -1,0 +1,35 @@
+
+
+
+<h4><%= truncate(book.title, length: 60) %></h4>
+<p>
+  <%= book.call_number %><br>
+  <%= Time.now.to_date.to_s(:long_ordinal) %>
+</p>
+
+<p><%= book.number_of_libraries %> <%= pluralize(book.number_of_libraries, 'library', 'libraries') %> hold this title.</p>
+<p>ND Holdings: <%= book.nd_holdings %></p>
+<p>Number of Loans: <%= book.number_of_loans %></p>
+
+<hr>
+
+<p><strong>Available</strong></p>
+
+<p>Books in Print: </p>
+<p>Internet Archive: </p>
+<p>Hathi Trust:</p>
+<p>Oclc:</p>
+
+<hr>
+
+<p><strong>Decision</strong></p>
+
+<ul>
+  <li>Withdraw: </li>
+  <li>Photoduplication: </li>
+  <li>Microfilm ND: </li>
+  <li>Digital Link: </li>
+  <li>Purchase Reprint: </li>
+  <li>Purchase Microfilm: </li>
+</ul>
+

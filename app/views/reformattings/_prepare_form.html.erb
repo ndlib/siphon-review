@@ -1,0 +1,36 @@
+<h3>Decisioning Infromation</h3>
+
+  <dl class="dl-horizontal">
+    <dt>ND Holdings:</dt>
+    <dd><%= book_form.book.nd_holdings %>&nbsp;</dd>
+
+    <dt>Number of Loans:</dt>
+    <dd><%= book_form.book.number_of_loans %>&nbsp;</dd>
+
+    <dt>Number of Libraries:</dt>
+    <dd><%= book_form.book.number_of_libraries %>&nbsp;</dd>
+
+    <dt>Hathi Trust:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.hathi_trust_url) %> </dd>
+  </dl>
+
+<p class="form-help">
+  Enter information for the selector to make a decision.
+</p>
+
+<%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
+
+  <%= f.input :books_in_print_url %>
+
+  <%= f.input :internet_active_url %>
+
+  <%= f.input :oclc_url %>
+
+  <%= f.input :notes_for_selectornotes_for_selector do %>
+    <%= f.input_field :notes_for_selector, as: "text", rows: 3, style: "width: 100%" %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ready for Selector", :class => 'btn-primary' %>
+  </div>
+<% end %>

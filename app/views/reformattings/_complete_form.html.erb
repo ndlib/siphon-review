@@ -1,0 +1,19 @@
+<h3>Actions</h3>
+<p class="form-help">
+  Indicate that the selector decisions have been completed.
+</p>
+
+<%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
+
+  <% book_form.decision_fields.each do | field | %>
+    <% if book_form.book.send(field) %>
+      <%= f.input "#{field}_completed", as: :boolean, inline_label: field.to_s.titleize, label:false %>
+    <% end %>
+  <% end %>
+
+
+  <div class="form-actions">
+    <%= f.button :submit, "Complete", :class => 'btn-primary' %>
+  </div>
+<% end %>
+

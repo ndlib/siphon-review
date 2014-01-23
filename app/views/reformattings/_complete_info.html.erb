@@ -1,0 +1,16 @@
+<h3>Actions</h3>
+
+<ul class="unstyled">
+<% book_form.decision_fields.each do | field | %>
+  <% if book_form.book.send(field) %>
+    <li>Chk <%= field.to_s.gsub("_completed", "").titleize %></li>
+  <% end %>
+<% end %>
+</ul>
+
+<% if book_form.book.status == 'complete' %>
+  <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
+    <%= hidden_field_tag 'goto_previous_step', 1 %>
+    <%= f.submit "Go back a step" %>
+  <% end %>
+<% end %>
