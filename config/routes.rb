@@ -2,6 +2,10 @@ Siphon::Application.routes.draw do
   devise_for :users
 
   resources :reformattings
+  resources :microfilm_reels
+
+  resources :microfilm_print_slips
+
   get :reformattings_print_slips, to: 'reformatting_print_slips#print'
 
   # The priority is based upon order of creation: first created -> highest priority.

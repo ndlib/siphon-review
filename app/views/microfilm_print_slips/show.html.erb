@@ -1,0 +1,24 @@
+<div class="print">
+
+  <div class="landscape master_negative">
+    <h1>Master Negative#:<br><%= @reel.name %></h1>
+  </div>
+
+  <h2>Reel Contents <br><%= @reel.name %></h2>
+  <ol>
+    <% @reel.microfilm_volumns.each do | v | %>
+      <li><%= v.reformatting_book.title %></li>
+    <% end %>
+  </ol>
+
+
+
+  <% @reel.microfilm_volumns.each do | v | %>
+    <div class="volumn_page landscape">
+      <h3><%= v.reformatting_book.title %></h3>
+      <h4><%= v.reformatting_book.publisher %></h4>
+    </div>
+  <% end %>
+
+
+</div>

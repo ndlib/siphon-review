@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118184300) do
+ActiveRecord::Schema.define(version: 20140124194023) do
+
+  create_table "microfilm_reels", force: true do |t|
+    t.string  "name"
+    t.string  "status"
+    t.boolean "printed"
+  end
+
+  create_table "microfilm_volumns", force: true do |t|
+    t.integer "reformatting_book_id"
+    t.boolean "partial_programmed"
+    t.string  "print_title"
+    t.integer "microfilm_reel_id"
+    t.integer "order"
+  end
 
   create_table "reformatting_books", force: true do |t|
     t.string "status"

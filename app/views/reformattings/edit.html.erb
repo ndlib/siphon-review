@@ -6,9 +6,8 @@
   <ul class="unstyled">
     <li><%= FrbrGroupSearchLink.new(@form.book.frbr_group_id, @form.book.document_number).link %></li>
     <li><%= WorldCatOclcNumberLink.new(@form.book.oclc_number).link %></li>
-    <li><%= link_to "Hathi Trust" %></li>
-    <li><a href="https://archive.org/search.php?query=<%= CGI.escape(@form.book.title) %>" target="_blank">Internet Archive</a></li>
-    <li><a href="http://www.booksinprint.com/SearchResults.aspx?q=quicksearch-all%3A%5B<%= CGI.escape(@form.book.title) %>%5D&op=1&qs=1" target="_blank">Books In Print</a></li>
+    <li><%= InternetArchiveSearchLink.new(@form.book.title).link %></li>
+    <li><%= BooksInPrintSearchLink.new(@form.book.title).link %></li>
   </ul>
 </div>
 <div class="four columns">

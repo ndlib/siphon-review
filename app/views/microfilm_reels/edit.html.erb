@@ -1,0 +1,39 @@
+
+
+
+<% content_for(:content_title) do %>
+  <h1><%= @reel.reel_name %></h1>
+<% end %>
+
+<%
+breadcrumb([ link_to('Microfilm Reels', microfilm_reels_path()), "#{@reel.reel_name}"])
+%>
+
+
+<h3>Volumes</h3>
+
+<%= simple_form_for @reel, url: microfilm_reel_path(@reel.microfilm_reel), method: :put do | f | %>
+
+  <ol id="volume_list">
+    <% @reel.current_volumns.each do | r | %>
+      <li><span><input type="text" name="edit_microfilm_reel_form[volumns][<%= r.reformatting_book_id %>]" value="<%= r.title %>" class="span8"></span> - <a href="#" class="delete_volume">x</a></li>
+    <% end %>
+  </ol>
+
+
+  <div>
+    <%= select_tag :possible_volumes, options_from_collection_for_select(@reel.potential_volumns, :id, :title), include_blank: true %>
+    <button class="btn add_volume_button">Add Volumne</button>
+  </div>
+
+  <div class="form-actions">
+    <%= f.input :complete, as: :boolean, inline_label: "This reel is full", label: false %>
+
+    <%= f.button :submit, "Save", :class => 'btn-primary' %>
+  </div>
+
+<% end %>
+
+<div style="display:none;" class="li_template">
+  <li id="ID"><span><input type="text" name="edit_microfilm_reel_form[volumns][ID]" value="TITLE" class="span8"></span> - <a href="#" class="delete_volume">x</a></li>
+</div>

@@ -1,0 +1,21 @@
+
+<% content_for(:content_title) do %>
+  <h1>New Microfilm Reels</h1>
+<% end %>
+
+<%
+breadcrumb([ link_to('Microfilm Reels', microfilm_reels_path()), 'New Microfilm Reel'])
+%>
+
+
+<div class="four coulmns">
+<%= simple_form_for @reel.microfilm_reel do | f | %>
+
+  <%= f.input :name, required: true %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save", :class => 'btn-primary' %>
+  </div>
+
+<% end %>
+</div>
