@@ -12,6 +12,7 @@ describe ReformattingList do
       expect(object.status).to eq("new")
     end
 
+
     it "allows the availale statuses to be set" do
       ReformattingList::AVAILABLE_STATUSES.each do | status |
         @controller.params[:status] = status
@@ -20,6 +21,7 @@ describe ReformattingList do
       end
     end
   end
+
 
   describe :book_list do
 
@@ -31,6 +33,7 @@ describe ReformattingList do
       end
     end
 
+
     it "returns all the inprocess books" do
       @controller.params[:status] = 'inprocess'
       object = ReformattingList.new(@controller)
@@ -39,6 +42,7 @@ describe ReformattingList do
       end
     end
 
+
     it "returns all the prepared books" do
       @controller.params[:status] = 'prepared'
       object = ReformattingList.new(@controller)
@@ -46,6 +50,7 @@ describe ReformattingList do
         expect(b.status).to eq("prepared")
       end
     end
+
 
     it "returns all the decisioned books" do
       @controller.params[:status] = 'decisioned'
@@ -65,8 +70,6 @@ describe ReformattingList do
 
       expect(object.tab_css_class('inprocess')).to eq('active')
     end
-
   end
-
 
 end

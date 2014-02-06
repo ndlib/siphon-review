@@ -10,6 +10,10 @@ class ReformattingPrepareForm
 
   attr_accessor :book
 
+  attribute :nd_holdings, String
+  attribute :number_of_loans, String
+  attribute :number_of_libraries, String
+  attribute :hathi_trust_url, String
   attribute :books_in_print_url, String
   attribute :internet_active_url, String
   attribute :oclc_url, String

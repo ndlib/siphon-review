@@ -1,0 +1,43 @@
+<% content_for(:content_title) do %>
+  <h1>Microfilm Reels</h1>
+<% end %>
+
+<% content_for(:content_title_links) do %>
+  <%= link_to "New Microfilm Reel", new_microfilm_reel_path(), class: 'btn btn-primary' %>
+<% end %>
+
+<%
+breadcrumb(['Microfilm Reels'])
+%>
+
+
+<div class="tabbable tabs-top">
+  <ul class="nav nav-tabs">
+    <li class="<%= @list.tab_css_class('open') %>">
+      <%= link_to 'Open', microfilm_reels_path(status: 'open'), class: "tab #{@list.tab_css_class('open')}" %>
+    </li>
+    <li class="<%= @list.tab_css_class('closed') %>">
+      <%= link_to 'Closed', microfilm_reels_path(status: 'closed'), class: "tab #{@list.tab_css_class('closed')}" %>
+    </li>
+  </ul>
+</div>
+
+
+<table class="table table-striped find-resources datatable">
+  <thead>
+    <tr>
+      <th>Storage Number</th>
+      <th># Items</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @list.reels.each do | r |  %>
+      <tr>
+        <td><%= link_to r.name, edit_microfilm_reel_path(r) %></td>
+        <td><%= r.microfilm_volumns.size %></td>
+        <td><a href="">Print</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

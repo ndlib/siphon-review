@@ -35,6 +35,6 @@ class AlephReformattingImport
 
 
   def import_record
-    ReformattingBook.where(document_number: @original_record[:document_number]).first
+    ReformattingBook.by_document_number(@original_record[:document_number])
   end
 end

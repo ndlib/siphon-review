@@ -3,7 +3,7 @@
 <ul class="unstyled">
 <% book_form.decision_fields.each do | field | %>
   <% if book_form.book.send(field) %>
-    <li>Chk <%= field.to_s.gsub("_completed", "").titleize %></li>
+    <li><i class="icon icon-check"></i> <%= field.to_s.gsub("_completed", "").titleize %></li>
   <% end %>
 <% end %>
 </ul>

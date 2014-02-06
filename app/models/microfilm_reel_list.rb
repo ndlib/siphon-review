@@ -1,21 +1,22 @@
 
-class ReformattingList
+
+class MicrofilmReelList
   attr_reader :status
 
-  AVAILABLE_STATUSES = ['new', 'inprocess', 'prepared', 'decisioned', 'complete']
+  AVAILABLE_STATUSES = ['open', 'closed']
 
   def initialize(controller)
     @controller = controller
     @status = determine_status
 
     if !AVAILABLE_STATUSES.include?(@status)
-      raise "Status passed to reformating is not valid"
+      raise "Status passed to microfilm is not valid"
     end
   end
 
 
-  def books
-    ReformattingBook.by_status(@status)
+  def reels
+    MicrofilmReel.where(status: @status)
   end
 
 
@@ -36,9 +37,11 @@ class ReformattingList
 
     def determine_status
       if !@controller.params[:status]
-        'new'
+        'open'
       else
         @controller.params[:status]
       end
     end
+
+
 end

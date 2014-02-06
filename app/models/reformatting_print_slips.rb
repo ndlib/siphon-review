@@ -5,7 +5,7 @@ class ReformattingPrintSlips
   attr_accessor :books
 
   def self.build_from_params(controller)
-    items = ReformattingBook.where('id IN(?)', controller.params[:ids].split(","))
+    items = ReformattingBook.find(controller.params[:ids].split(","))
 
     self.new(items)
   end
