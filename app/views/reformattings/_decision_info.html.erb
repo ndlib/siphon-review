@@ -1,3 +1,6 @@
+<% content_for(:content_title_links) do %>
+  <%= link_to 'Print Book Slip', reformattings_print_slips_path(ids: book_form.id), class: 'btn btn-success', target: 'blank' %>
+<% end %>
 <h3>Selector Decision</h3>
 
 <ul class="unstyled">

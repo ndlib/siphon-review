@@ -3,13 +3,10 @@
     <%= book.publisher %><br>
     <%= book.call_number %><br />
     <small>Barcode: <%= book.barcode %></small><br>
-    <small>System Number: <%= book.document_number.rjust(9, '0') %></small>
+    <small>System Number: <%= book.document_number.rjust(9, '0') %></small><br>
+    <small>Status: <%= book.status %></small>
   </p>
 <%
 breadcrumb([link_to('Reformatting Books', reformattings_path), book.title])
 %>
-<p>
-  <strong>Step: </strong>
-  <span class="muted">1. Inprocess</span> -> <span class="text-success"><strong>2. Prepared</strong></span> -> 3. Decisioned -> 4. Complete
-</p>
 
