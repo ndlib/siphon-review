@@ -56,6 +56,10 @@ class EditMicrofilmReelForm
   end
 
 
+  def closed?
+    @microfilm_reel.closed?
+  end
+
   private
 
 

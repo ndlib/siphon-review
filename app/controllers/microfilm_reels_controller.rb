@@ -33,7 +33,11 @@ class MicrofilmReelsController < ApplicationController
 
     if @reel.add_volumns!()
       flash[:notice] = "Microfilm Reel Saved"
-      redirect_to microfilm_reels_path()
+      if @reel.closed?
+        redirect_to microfilm_reels_path(status: 'closed')
+      else
+        redirect_to microfilm_reels_path()
+      end
     else
       flash[:error] = "There has been an error saving the reel.  Please review the form and try again."
     end

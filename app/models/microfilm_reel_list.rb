@@ -16,7 +16,7 @@ class MicrofilmReelList
 
 
   def reels
-    MicrofilmReel.where(status: @status)
+    MicrofilmReel.where(status: @status).order(:created_at)
   end
 
 
