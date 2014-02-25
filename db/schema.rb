@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20140124194023) do
 
   create_table "microfilm_reels", force: true do |t|
-    t.string  "name"
-    t.string  "status"
-    t.boolean "printed"
+    t.string   "name"
+    t.string   "status"
+    t.boolean  "printed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "microfilm_volumns", force: true do |t|

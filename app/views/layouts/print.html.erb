@@ -9,15 +9,51 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" sizes="128x128" href="http://library.nd.edu/icons/favicon-152.png">
 
-
-    <%= stylesheet_link_tag    "hesburgh_assets/admin/1.0/index.css", :media => "all" %>
-
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-
-    <%= javascript_include_tag "hesburgh_assets/admin/1.0/index.js" %>
     <%= javascript_include_tag "application" %>
 
-    <%= csrf_meta_tags %>
+    <style>
+      @media print {
+        .master_negative {
+          page-break-after:always;
+          height:612px;
+        }
+        .master_negative h1 {
+          padding-top: 200px;
+          text-align: center;
+          font-size:5em;
+          margin:0;
+        }
+
+        .volumn_page {
+          page-break-before: always;
+        }
+
+        h2 {
+          font-size:2em;
+          text-align: center;
+        }
+
+        ol li {
+          line-height: 1.5em;
+          font-size: 16px;
+        }
+
+        .volumn_page h3 {
+          font-size:3em;
+          padding-top: 100px;
+          min-height: 300px;
+        }
+
+        .volumn_page h4 {
+          font-size: 2.5em;
+        }
+
+        @page {
+          size: landscape;
+        }
+      }
+
+    </style>
 
   </head>
   <body class="print">

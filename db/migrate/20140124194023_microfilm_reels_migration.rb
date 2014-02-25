@@ -6,6 +6,7 @@ class MicrofilmReelsMigration < ActiveRecord::Migration
       t.string :name
       t.string :status
       t.boolean :printed
+      t.timestamps
 
     end
 
