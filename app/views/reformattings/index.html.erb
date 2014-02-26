@@ -25,6 +25,7 @@ breadcrumb(['Reformatting Books'])
       <%= link_to 'Completed', reformattings_path(status: 'complete'), class: "tab #{@reformatting_list.tab_css_class('complete')}" %>
     </li>
   </ul>
+
 </div>
 
 
@@ -33,7 +34,6 @@ breadcrumb(['Reformatting Books'])
     <tr>
       <th>Title</th>
       <th>Call Number</th>
-      <th>Category</th>
       <th>Barcode</th>
     </tr>
   </thead>
@@ -42,7 +42,6 @@ breadcrumb(['Reformatting Books'])
       <tr>
         <td><%= link_to book.title, edit_reformatting_path(book) %></td>
         <td><%= book.call_number %></td>
-        <td><%= book.category %></td>
         <td><%= book.barcode %></td>
       </tr>
     <% end %>
