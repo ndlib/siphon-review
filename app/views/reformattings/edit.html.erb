@@ -10,7 +10,19 @@
     <li><%= InternetArchiveSearchLink.new(@form.book.title).link %></li>
     <li><%= BooksInPrintSearchLink.new(@form.book.title).link %></li>
   </ul>
+  <hr>
+  <dl>
+    <dt>Publisher</dt>
+    <dd><%= @form.book.publisher %></dd>
+    <dt>Call Number</dt>
+    <dd><%= @form.book.call_number %></dd>
+    <dt>Barcode</dt><dd><%= @form.book.barcode %></dd>
+    <dt>System Number</dt><dd><%= @form.book.document_number.rjust(9, '0') %></dd>
+    <dt>Status</dt><dd><%= @form.book.status %></dd>
+  </dl>
+
 </div>
+
 <div class="four columns">
   <%= render @form.section1 %>
 </div>

@@ -9,6 +9,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" sizes="128x128" href="http://library.nd.edu/icons/favicon-152.png">
 
+    <%= stylesheet_link_tag    "hesburgh_assets/admin/1.0/index.css", :media => "all" %>
     <%= javascript_include_tag "application" %>
 
     <style>
@@ -51,6 +52,10 @@
         @page {
           size: landscape;
         }
+      }
+
+      body {
+        background-color: white
       }
 
     </style>
