@@ -27,7 +27,6 @@ class EditMicrofilmReelForm
 
     self.complete = (@microfilm_reel.status == 'closed')
     pass_in_params(params)
-
   end
 
 
@@ -61,7 +60,6 @@ class EditMicrofilmReelForm
   end
 
   private
-
 
     def pass_in_params(params)
       if params
