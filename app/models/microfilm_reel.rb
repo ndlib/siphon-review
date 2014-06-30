@@ -20,12 +20,5 @@ class MicrofilmReel < ActiveRecord::Base
     state :closed
   end
 
-  def initialize(attrs = {})
-    self.attributes= attrs
-
-    # this is required for the state_machine gem do not forget again and remove
-    super()
-  end
-
 
 end
