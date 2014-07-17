@@ -317,6 +317,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   american_date
   capistrano
   capybara
