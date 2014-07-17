@@ -5,6 +5,10 @@ gem 'rails', '4.0.0'
 
 
 gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
+gem "hesburgh_infrastructure", git: 'git@git.library.nd.edu:hesburgh_infrastructure'
+
+gem "therubyracer"
+
 
 gem 'american_date'
 
