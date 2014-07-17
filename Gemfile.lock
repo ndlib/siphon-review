@@ -347,6 +347,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.11)
   nested_form
   net-ldap
+  nokogiri
   paperclip
   pry-rails
   rails (= 4.0.0)
