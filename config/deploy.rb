@@ -12,7 +12,7 @@ begin
   #require 'hipchat/capistrano'
   #require 'new_relic/recipes'
 
-  after "deploy:update", "newrelic:notice_deployment"
+#  after "deploy:update", "newrelic:notice_deployment"
 rescue LoadError
 end
 
