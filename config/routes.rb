@@ -1,7 +1,7 @@
 Siphon::Application.routes.draw do
   devise_for :users
 
-  root to: :reformattings
+  root to: "reformattings#index"
 
   resources :reformattings
   resources :microfilm_reels
