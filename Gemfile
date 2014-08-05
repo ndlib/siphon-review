@@ -71,7 +71,7 @@ gem 'nokogiri'
 
 gem 'addressable'
 
-gem 'rb-readline', '~> 0.4.2' # specified to this version becase 0.5.0 was not working with pry in ruby 1.9.3
+gem 'rb-readline'
 
 gem "whenever", :require => false
 
