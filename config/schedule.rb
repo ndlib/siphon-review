@@ -25,6 +25,6 @@ job_type :rake,   "cd :path && :environment_variable=:environment bundle exec ra
 
 
 
-every "30 * * * *" do
+every "10 * * * *" do
   runner "AlephReformattingImporter.new.import!"
 end
