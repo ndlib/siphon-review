@@ -73,6 +73,8 @@ gem 'addressable'
 
 gem 'rb-readline', '~> 0.4.2' # specified to this version becase 0.5.0 was not working with pry in ruby 1.9.3
 
+gem "whenever", :require => false
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
