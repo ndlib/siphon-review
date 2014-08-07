@@ -82,4 +82,7 @@ Siphon::Application.configure do
   config.reserves_cas_base              = 'https://login.nd.edu/cas'
   config.reserves_cas_validate          = 'https://login.nd.edu/cas/serviceValidate'
   config.reserves_cas_logout            = 'https://login.nd.edu/cas/logout'
+
+  config.api_url                        = "https://api.library.nd.edu/"
+  config.api_token                      = "nDKg6F8dAcUkCdzzFqc5"
 end
