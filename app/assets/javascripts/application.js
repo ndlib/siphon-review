@@ -13,7 +13,6 @@
 //= require jquery
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
-//= require turbolinks
 //= require reformatting
 //= require_tree .
 
