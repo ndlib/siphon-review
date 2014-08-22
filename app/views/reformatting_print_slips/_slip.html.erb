@@ -15,10 +15,10 @@
 
 <p><strong>Available</strong></p>
 
-<p>Books in Print: </p>
-<p>Internet Archive: </p>
-<p>Hathi Trust:</p>
-<p>Oclc:</p>
+<p>Books in Print: <%= link_to_reformatting_url(book.books_in_print_url) %> </p>
+<p>Internet Archive: <%= link_to_reformatting_url(book.internet_active_url) %></p>
+<p>Hathi Trust:<%= link_to_reformatting_url(book.hathi_trust_url) %></p>
+<p>Microfilm Only: <%= book.microfilm_only ? 'Yes' : 'No' %></p>
 
 <hr>
 

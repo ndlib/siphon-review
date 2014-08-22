@@ -25,6 +25,8 @@ class ReformattingDecisionForm
   attribute :digital_link, Boolean
   attribute :purchase_reprint, Boolean
   attribute :purchase_microfilm, Boolean
+  attribute :return_to_shelf, Boolean
+  attribute :send_to_special_collections, Boolean
   attribute :fund_code, String
 
   delegate :id, to: :book
