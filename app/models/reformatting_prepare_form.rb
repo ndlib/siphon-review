@@ -16,7 +16,7 @@ class ReformattingPrepareForm
   attribute :hathi_trust_url, String
   attribute :books_in_print_url, String
   attribute :internet_active_url, String
-  attribute :oclc_url, String
+  attribute :microfilm_only, Boolean
   attribute :notes_for_selector, String
 
   delegate :id, to: :book

@@ -28,6 +28,14 @@
     <li><i class="icon icon-check"></i> Purchase Reprint</li>
   <% end %>
 
+  <% if book_form.book.return_to_shelf %>
+    <li><i class="icon icon-check"></i> Return to Shelf</li>
+  <% end %>
+
+  <% if book_form.book.send_to_special_collections %>
+    <li><i class="icon icon-check"></i> Send to Special Collections</li>
+  <% end %>
+
   <% if book_form.book.fund_code.present? %>
     <li>Fund Code: <%= book_form.book.fund_code %></li>
   <% end %>

@@ -19,8 +19,8 @@
     <dt>Internet Archive:</dt>
     <dd><%= link_to_reformatting_url(book_form.book.internet_active_url) %>&nbsp;</dd>
 
-    <dt>Oclc:</dt>
-    <dd><%= link_to_reformatting_url(book_form.book.oclc_url) %>&nbsp;</dd>
+    <dt>Microfilm Only:</dt>
+    <dd><%= book_form.book.microfilm_only ? 'Yes' : 'No' %>&nbsp;</dd>
 
 </dl>
 <strong>Notes For Selector:</strong>
