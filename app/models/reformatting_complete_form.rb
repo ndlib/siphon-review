@@ -16,6 +16,7 @@ class ReformattingCompleteForm
   attribute :purchase_reprint_completed, Boolean
   attribute :purchase_microfilm_completed, Boolean
   attribute :send_to_special_collections_completed, Boolean
+  attribute :box_completed, Boolean
   attribute :return_to_shelf_completed, Boolean
 
 
@@ -50,7 +51,7 @@ class ReformattingCompleteForm
 
 
   def decision_fields
-    [:withdraw, :photodup, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :send_to_special_collections]
+    [:withdraw, :box, :photodup, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :send_to_special_collections]
   end
 
 
