@@ -32,6 +32,11 @@
     <li><i class="icon icon-check"></i> Return to Shelf</li>
   <% end %>
 
+  <% if book_form.book.box %>
+    <li><i class="icon icon-check"></i> Send to Special Collections</li>
+  <% end %>
+
+
   <% if book_form.book.send_to_special_collections %>
     <li><i class="icon icon-check"></i> Send to Special Collections</li>
   <% end %>
