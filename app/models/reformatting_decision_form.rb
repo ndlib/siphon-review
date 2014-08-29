@@ -28,6 +28,7 @@ class ReformattingDecisionForm
   attribute :return_to_shelf, Boolean
   attribute :send_to_special_collections, Boolean
   attribute :fund_code, String
+  attribute :notes_from_selector, String
 
   delegate :id, to: :book
 
