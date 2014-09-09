@@ -7,7 +7,7 @@
   <%= Time.now.to_date.to_s(:long_ordinal) %>
 </p>
 
-<p><%= book.number_of_libraries %> <%= pluralize(book.number_of_libraries, 'library', 'libraries') %> hold this title.</p>
+<p><%= pluralize(book.number_of_libraries, 'library', 'libraries') %> hold this title.</p>
 <p>ND Holdings: <%= book.nd_holdings %></p>
 <p>Number of Loans: <%= book.number_of_loans %></p>
 
