@@ -48,7 +48,7 @@ class AlephReformattingImporter
 
 
   def file_name
-    "http://alephprod.library.nd.edu/app_tmp/aleph_tmp/#{Date.today.to_s(:dashed)}-ru-items.xml"
+    "http://alephprod.library.nd.edu/aleph_tmp/#{Date.today.to_s(:dashed)}-ru-items.xml"
   end
 
 
