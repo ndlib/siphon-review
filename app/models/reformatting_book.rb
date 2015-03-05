@@ -42,6 +42,11 @@ class ReformattingBook < ActiveRecord::Base
     self.where(document_number: number).first
   end
 
+  def self.by_unique_id(number)
+    self.where(unique_id: number).first
+  end
+
+
 
   def self.books_to_be_microfilmed
     self.by_status('decisioned')

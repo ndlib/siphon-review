@@ -9,14 +9,27 @@ class AlephReformattingImporter
     begin
       xml = xml_from_source
       parse_xml(xml).each do | record |
-        item = parse_attributes(record)
-        AlephReformattingImport.new(item).import!
+        parse_attributes(record).each do |item|
+          AlephReformattingImport.new(item).import!
+        end
       end
     rescue Exception => e
       # log error
       puts "error"
       raise e
     end
+  end
+
+  def fix_records!
+      xml = xml_from_source
+      parse_xml(xml).each do | record |
+        parse_new_attributes(record).each do | document_number, conversion |
+          if book = ReformattingBook.by_document_number(document_number)
+            book.unique_id = conversion
+            book.save!
+          end
+        end
+      end
   end
 
 
@@ -36,12 +49,32 @@ class AlephReformattingImporter
 
 
   def parse_attributes(record)
+    title = record.at('z13-title').text.strip
+    document_number = record.at('z13-doc-number').text.strip
+
+    items = []
+    record.xpath('item').each do | item |
+      ret = {}
+      ret[:title] = title
+      ret[:document_number] = document_number
+      ret[:call_number] = item.at('z30-call-no').text
+      ret[:barcode] = item.at('z30-barcode').text
+      ret[:unique_id] =  "#{document_number}-#{item.at('z30-item-sequence').text.strip}"
+
+      items << ret
+    end
+
+    items
+  end
+
+
+  def parse_new_attributes(record)
+    doc_number = record.at('z13-doc-number').text
     ret = {}
-    ret[:title] = record.at('z13-title').text
-    ret[:document_number] = record.at('z13-doc-number').text
+
     item = record.at('item')
-    ret[:call_number] = item.at('z30-call-no').text
-    ret[:barcode] = item.at('z30-barcode').text
+    ret[doc_number] = "#{doc_number}-#{item.at('z30-item-sequence').text.strip}"
+
 
     ret
   end
