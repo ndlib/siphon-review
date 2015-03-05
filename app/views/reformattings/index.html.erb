@@ -33,6 +33,7 @@ breadcrumb(['Reformatting Books'])
   <thead>
     <tr>
       <th>Title</th>
+      <th>Volume</th>
       <th>Call Number</th>
       <th>Barcode</th>
     </tr>
@@ -41,6 +42,7 @@ breadcrumb(['Reformatting Books'])
     <% @reformatting_list.books.each do | book | %>
       <tr>
         <td><%= link_to book.title, edit_reformatting_path(book) %></td>
+        <td><%= book.aleph_description %></td>
         <td><%= book.call_number %></td>
         <td><%= book.barcode %></td>
       </tr>

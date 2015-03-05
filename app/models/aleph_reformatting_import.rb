@@ -13,6 +13,8 @@ class AlephReformattingImport
     if record_needs_import?
       import_item!
       return true
+    else
+      update_item!
     end
 
     return false
@@ -23,6 +25,10 @@ class AlephReformattingImport
     @import_record.nil?
   end
 
+  def update_item!
+    @import_record.attributes = @original_record
+    @import_record.save!
+  end
 
   def import_item!
     @import_record = ReformattingBook.new(@original_record)

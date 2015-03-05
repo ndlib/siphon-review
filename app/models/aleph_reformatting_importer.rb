@@ -60,6 +60,7 @@ class AlephReformattingImporter
       ret[:call_number] = item.at('z30-call-no').text
       ret[:barcode] = item.at('z30-barcode').text
       ret[:unique_id] =  "#{document_number}-#{item.at('z30-item-sequence').text.strip}"
+      ret[:aleph_description] = item.at('z30-description').text.strip
 
       items << ret
     end
