@@ -7,7 +7,7 @@
   <h2>Reel Contents <br><%= @reel.name %></h2>
   <ol>
     <% @reel.microfilm_volumns.each do | v | %>
-      <li><%= v.reformatting_book.title %></li>
+      <li><%= v.title %></li>
     <% end %>
   </ol>
 
@@ -15,7 +15,7 @@
 
   <% @reel.microfilm_volumns.each do | v | %>
     <div class="volumn_page landscape">
-      <h3><%= v.reformatting_book.title %></h3>
+      <h3><%= v.title %></h3>
       <h4><%= v.reformatting_book.publisher %></h4>
       <h4><%= @reel.name %></h4>
     </div>

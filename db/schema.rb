@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124194023) do
+ActiveRecord::Schema.define(version: 20150305145252) do
 
   create_table "microfilm_reels", force: true do |t|
     t.string   "name"
@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 20140124194023) do
     t.string "barcode"
     t.string "document_number"
     t.text   "data"
+    t.string "unique_id"
   end
 
   add_index "reformatting_books", ["document_number"], name: "index_reformatting_books_on_document_number", using: :btree
   add_index "reformatting_books", ["status"], name: "index_reformatting_books_on_status", using: :btree
+  add_index "reformatting_books", ["unique_id"], name: "index_reformatting_books_on_unique_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

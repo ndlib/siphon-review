@@ -35,6 +35,6 @@ class AlephReformattingImport
 
 
   def import_record
-    ReformattingBook.by_document_number(@original_record[:document_number])
+    ReformattingBook.by_unique_id(@original_record[:unique_id])
   end
 end
