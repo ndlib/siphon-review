@@ -1,6 +1,4 @@
-
-
-class InternetArchiveSearchLink
+class AbeBooksSearchLink
   include RailsHelpers
 
   def initialize(title)
@@ -8,13 +6,13 @@ class InternetArchiveSearchLink
   end
 
   def link
-    helpers.link_to "Internet Archive", url, target: '_blank'
+    helpers.link_to "Abe Books", url, target: '_blank'
   end
 
   private
 
     def url
-      "https://archive.org/search.php?query=#{CGI.escape("title:(#{title})")}"
+      "http://www.abebooks.com/servlet/SearchResults?sts=t&tn=#{CGI.escape("#{title}")}"
     end
 
 
