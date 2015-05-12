@@ -8,6 +8,9 @@
     <li><%= WorldCatOclcNumberLink.new(@form.book.oclc_number).link %></li>
     <li><%= HathiTrustSearchLink.new(@form.book.title).link %></li>
     <li><%= InternetArchiveSearchLink.new(@form.book.title).link %></li>
+    <li><%= AmazonSearchLink.new(@form.book.title).link %></li>
+    <li><%= AbeBooksSearchLink.new(@form.book.title).link %></li>
+    <li><%= AlibrisSearchLink.new(@form.book.title).link %></li>
   </ul>
   <hr>
   <dl>
