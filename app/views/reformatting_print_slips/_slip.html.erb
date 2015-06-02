@@ -15,10 +15,16 @@
 
 <p><strong>Available</strong></p>
 
-<p>Books in Print: <%= link_to_reformatting_url(book.books_in_print_url) %> </p>
-<p>Internet Archive: <%= link_to_reformatting_url(book.internet_active_url) %></p>
-<p>Hathi Trust:<%= link_to_reformatting_url(book.hathi_trust_url) %></p>
+<p>Books in Print: <%= print_reformatting_url(book.books_in_print_url) %> </p>
+<p>Internet Archive: <%= print_reformatting_url(book.internet_active_url) %></p>
+<p>Hathi Trust: <%= print_reformatting_url(book.hathi_trust_url) %></p>
+<p>Amazon: <%= print_reformatting_url(book.amazon_url) %></p>
+<p>Abe Books: <%= print_reformatting_url(book.abe_books_url) %></p>
+<p>Alibris: <%= print_reformatting_url(book.alibris_url) %></p>
 <p>Microfilm Only: <%= book.microfilm_only ? 'Yes' : 'No' %></p>
+
+<strong>Notes For Selector:</strong>
+<%= simple_format(book.notes_for_selector) %>
 
 <hr>
 

@@ -14,7 +14,9 @@ class ReformattingPrepareForm
   attribute :number_of_loans, String
   attribute :number_of_libraries, String
   attribute :hathi_trust_url, String
-  attribute :books_in_print_url, String
+  attribute :amazon_url, String
+  attribute :abe_books_url, String
+  attribute :alibris_url, String
   attribute :internet_active_url, String
   attribute :microfilm_only, Boolean
   attribute :notes_for_selector, String
