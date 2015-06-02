@@ -1,6 +1,6 @@
 class ReformattingBook < ActiveRecord::Base
 
-  store :data, accessors: [ :publisher, :creator_contributor, :oclc_number, :frbr_group_id, :nd_holdings, :number_of_loans, :number_of_libraries, :hathi_trust_url, :books_in_print_url, :internet_active_url, :oclc_url, :microfilm_only, :notes_for_selector, :notes_from_selector, :withdraw, :photodup, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :box, :send_to_special_collections, :fund_code, :return_to_shelf_completed,:send_to_special_collections_completed, :box_completed, :withdraw_completed, :photodup_completed, :microfilm_nd_completed, :digital_link_completed, :purchase_reprint_completed, :purchase_microfilm_completed, :aleph_description ]
+  store :data, accessors: [ :publisher, :creator_contributor, :oclc_number, :frbr_group_id, :nd_holdings, :number_of_loans, :number_of_libraries, :hathi_trust_url, :books_in_print_url, :internet_active_url, :oclc_url, :amazon_url, :abe_books_url, :alibris_url, :microfilm_only, :notes_for_selector, :notes_from_selector, :withdraw, :photodup, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :box, :send_to_special_collections, :fund_code, :return_to_shelf_completed,:send_to_special_collections_completed, :box_completed, :withdraw_completed, :photodup_completed, :microfilm_nd_completed, :digital_link_completed, :purchase_reprint_completed, :purchase_microfilm_completed, :aleph_description ]
 
 
   state_machine :status, :initial => :new do

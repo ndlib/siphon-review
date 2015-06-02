@@ -13,18 +13,24 @@
     <dt>Hathi Trust:</dt>
     <dd><%= link_to_reformatting_url(book_form.book.hathi_trust_url) %>&nbsp;</dd>
 
-    <dt>Books In Print:</dt>
-    <dd><%= link_to_reformatting_url(book_form.book.books_in_print_url) %>&nbsp;</dd>
-
     <dt>Internet Archive:</dt>
     <dd><%= link_to_reformatting_url(book_form.book.internet_active_url) %>&nbsp;</dd>
+
+    <dt>Amazon:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.amazon_url) %>&nbsp;</dd>
+
+    <dt>Abe Books:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.abe_books_url) %>&nbsp;</dd>
+
+    <dt>Alibris:</dt>
+    <dd><%= link_to_reformatting_url(book_form.book.alibris_url) %>&nbsp;</dd>
 
     <dt>Microfilm Only:</dt>
     <dd><%= book_form.book.microfilm_only ? 'Yes' : 'No' %>&nbsp;</dd>
 
 </dl>
 <strong>Notes For Selector:</strong>
-<%= simple_format(book_form.book.notes_from_selector) %>
+<%= simple_format(book_form.book.notes_for_selector) %>
 
 <% if book_form.book.status == 'prepared' %>
     <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
