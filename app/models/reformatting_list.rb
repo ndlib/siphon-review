@@ -2,7 +2,7 @@
 class ReformattingList
   attr_reader :status
 
-  AVAILABLE_STATUSES = ['new', 'inprocess', 'prepared', 'decisioned', 'complete']
+  AVAILABLE_STATUSES = ['new', 'inprocess', 'prepared', 'decisioned', 'complete', 'all']
 
   def initialize(controller)
     @controller = controller
@@ -15,7 +15,11 @@ class ReformattingList
 
 
   def books
-    ReformattingBook.by_status(@status)
+    if (status == 'all')
+      ReformattingBook.all
+    else
+      ReformattingBook.by_status(status)
+    end
   end
 
 
