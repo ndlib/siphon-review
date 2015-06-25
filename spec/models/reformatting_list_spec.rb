@@ -59,6 +59,15 @@ describe ReformattingList do
         expect(b.status).to eq("decisioned")
       end
     end
+
+
+    it "returns all the all books" do
+      @controller.params[:status] = 'all'
+      object = ReformattingList.new(@controller)
+
+      expect(ReformattingBook).to receive(:all).and_return([])
+      object.books
+    end
   end
 
 

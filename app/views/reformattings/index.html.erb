@@ -24,6 +24,9 @@ breadcrumb(['Reformatting Books'])
     <li class="<%= @reformatting_list.tab_css_class('complete') %>">
       <%= link_to 'Completed', reformattings_path(status: 'complete'), class: "tab #{@reformatting_list.tab_css_class('complete')}" %>
     </li>
+    <li class="<%= @reformatting_list.tab_css_class('all') %>">
+      <%= link_to 'All', reformattings_path(status: 'all'), class: "tab #{@reformatting_list.tab_css_class('complete')}" %>
+    </li>
   </ul>
 
 </div>
