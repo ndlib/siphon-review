@@ -39,6 +39,8 @@ breadcrumb(['Reformatting Books'])
       <th>Volume</th>
       <th>Call Number</th>
       <th>Barcode</th>
+      <th>System Number</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
@@ -48,6 +50,8 @@ breadcrumb(['Reformatting Books'])
         <td><%= book.aleph_description %></td>
         <td><%= book.call_number %></td>
         <td><%= book.barcode %></td>
+        <td><%= book.document_number %></td>
+        <td><%= book.status %></td>
       </tr>
     <% end %>
   </tbody>
