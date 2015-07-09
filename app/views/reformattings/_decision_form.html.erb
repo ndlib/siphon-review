@@ -8,7 +8,8 @@
 <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
 
   <%= f.input :withdraw, as: :boolean, inline_label: 'Withdraw', label:false %>
-  <%= f.input :photodup, as: :boolean, inline_label: 'Photoduplication', label:false %>
+  <%= f.input :digital, as: :boolean, inline_label: 'Digital', label:false %>
+  <%= f.input :digital_and_paper_output, as: :boolean, inline_label: 'Digital and Paper Output', label:false %>
   <%= f.input :microfilm_nd, as: :boolean, inline_label: 'Microfilm ND', label:false %>
   <%= f.input :digital_link, as: :boolean, inline_label: 'Digital Link', label:false %>
   <%= f.input :purchase_reprint, as: :boolean, inline_label: 'Purchase Reprint', label:false %>

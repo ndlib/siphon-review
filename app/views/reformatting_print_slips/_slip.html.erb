@@ -6,7 +6,7 @@
   <%= book.call_number %><br>
   <%= Time.now.to_date.to_s(:long_ordinal) %>
 </p>
-
+<p>System Number: <%= book.document_number %></p>
 <p><%= pluralize(book.number_of_libraries, 'library', 'libraries') %> hold this title.</p>
 <p>ND Holdings: <%= book.nd_holdings %></p>
 <p>Number of Loans: <%= book.number_of_loans %></p>
@@ -32,7 +32,8 @@
 
 <ul class="unstyled" style="padding-bottom: 20px;">
   <li><%= image_tag 'check-box-empty.gif' %> Withdraw</li>
-  <li><%= image_tag 'check-box-empty.gif' %> Photoduplication</li>
+  <li><%= image_tag 'check-box-empty.gif' %> Digital</li>
+  <li><%= image_tag 'check-box-empty.gif' %> Digital and Paper Output</li>
   <li><%= image_tag 'check-box-empty.gif' %> Microfilm ND</li>
   <li><%= image_tag 'check-box-empty.gif' %> Digital Link</li>
   <li><%= image_tag 'check-box-empty.gif' %> Purchase Reprint</li>
@@ -42,4 +43,3 @@
   <li><%= image_tag 'check-box-empty.gif' %> Send to Special Collections</li>
   <li>Fund Code: </li>
 </ul>
-

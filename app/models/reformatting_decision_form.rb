@@ -21,6 +21,8 @@ class ReformattingDecisionForm
 
   attribute :withdraw, Boolean
   attribute :photodup, Boolean
+  attribute :digital, Boolean
+  attribute :digital_and_paper_output, Boolean
   attribute :microfilm_nd, Boolean
   attribute :digital_link, Boolean
   attribute :purchase_reprint, Boolean
