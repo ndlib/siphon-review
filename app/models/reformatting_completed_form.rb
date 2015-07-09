@@ -49,7 +49,7 @@ class ReformattingCompletedForm
 
 
   def decision_fields
-    [:withdraw, :photodup, :box, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :send_to_special_collections]
+    [:withdraw, :digital, :digital_and_paper_output, :box, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :send_to_special_collections]
   end
 
 
