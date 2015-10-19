@@ -75,12 +75,16 @@ gem 'rb-readline'
 
 gem "whenever", :require => false
 
+# used to fix broken osx builds.
+gem "libv8", "3.16.14.7"
+
+gem "faraday"
+gem "faraday_middleware"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
 
 group :test do
   gem 'json_spec'
@@ -109,8 +113,6 @@ group :test do
   gem 'webmock'
 end
 
-
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails' # Debugger replacements.  Use "binding.pry" where you would use "debugger"
@@ -127,4 +129,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+  # gem 'debugger', group: [:development, :test]
