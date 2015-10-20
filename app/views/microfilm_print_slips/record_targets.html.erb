@@ -1,37 +1,37 @@
 
-  <% @reel.microfilm_volumns.each do | v | %>
-    <div class="record_target">
-      <h1>Bibligraphic Record Target</h1>
-      <h2>Master Negative#:<%= v.master_negative %></h2>
-      <h3>System Number#:<%= v.reformatting_book.formatted_document_number %></h3>
-      <pre>
-        <%= BibRecordFile.load(v.reformatting_book.formatted_document_number) %>
-      </pre>
-      <hr />
-      <h3>University Libraries of Notre Dame</h3>
-      <h3>Preservation Department, Refomatting Unit</h3>
-      <p>
-        <strong>Technical Information</strong>
-      </p>
-      <div style="float: left; width: 24%; margin-left: 20px;">
-        <p>Film Size: </p>
-        <p>Image Placement: </p>
-        <p>Date Filming Began: </p>
-      </div>
-      <div style="float: left; width: 25%">
-        <p>_______________________</p>
-        <p>IA IIA IB IIB</p>
-        <p>_______________________</p>
-      </div>
-      <div style="float: left; width: 23%">
-        <p>Reduction Ratio: </p>
-        <p></p>
-        <p>Filmer's Initials: </p>
-      </div>
-      <div style="float: left; width: 24%">
-        <p>_______________________</p>
-        <p></p>
-        <p>_______________________</p>
-      </div>
+<% @reel.microfilm_volumns.each do | v | %>
+  <div class="record_target <%= (v != @reel.microfilm_volumns.last) ? 'page_break' : '' %>">
+    <h1>Bibligraphic Record Target</h1>
+    <h2>Master Negative#:<%= v.master_negative %></h2>
+    <h3>System Number#:<%= v.reformatting_book.formatted_document_number %></h3>
+    <pre>
+      <%= BibRecordFile.load(v.reformatting_book.formatted_document_number) %>
+    </pre>
+    <hr />
+    <h3>University Libraries of Notre Dame</h3>
+    <h3>Preservation Department, Refomatting Unit</h3>
+    <p>
+      <strong>Technical Information</strong>
+    </p>
+    <div style="float: left; width: 24%; margin-left: 20px;">
+      <p>Film Size: </p>
+      <p>Image Placement: </p>
+      <p>Date Filming Began: </p>
     </div>
-  <% end %>
+    <div style="float: left; width: 25%">
+      <p>_______________________</p>
+      <p>IA IIA IB IIB</p>
+      <p>_______________________</p>
+    </div>
+    <div style="float: left; width: 23%">
+      <p>Reduction Ratio: </p>
+      <p></p>
+      <p>Filmer's Initials: </p>
+    </div>
+    <div style="float: left; width: 24%">
+      <p>_______________________</p>
+      <p></p>
+      <p>_______________________</p>
+    </div>
+  </div>
+<% end %>
