@@ -5,11 +5,9 @@ class MicrofilmReelsController < ApplicationController
     @list = MicrofilmReelList.new(self)
   end
 
-
   def new
     @reel = NewMicrofilmReelForm.build_from_params(self)
   end
-
 
   def create
     @reel = NewMicrofilmReelForm.build_from_params(self)
@@ -22,11 +20,9 @@ class MicrofilmReelsController < ApplicationController
     end
   end
 
-
   def edit
     @reel = EditMicrofilmReelForm.build_from_params(self)
   end
-
 
   def update
     @reel = EditMicrofilmReelForm.build_from_params(self)
@@ -41,9 +37,5 @@ class MicrofilmReelsController < ApplicationController
     else
       flash[:error] = "There has been an error saving the reel.  Please review the form and try again."
     end
-
   end
-
-
-
 end

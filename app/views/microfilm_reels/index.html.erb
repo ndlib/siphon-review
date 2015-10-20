@@ -36,7 +36,10 @@ breadcrumb(['Microfilm Reels'])
       <tr>
         <td><%= link_to r.name, edit_microfilm_reel_path(r) %></td>
         <td><%= r.microfilm_volumns.size %></td>
-        <td><%= link_to 'Print', microfilm_print_slip_path(r.id), target: 'blank' %></a></td>
+        <td>
+          <%= link_to 'Print Reel Contents', microfilm_print_slip_path(r.id), target: 'blank' %></a> |
+          <%= link_to 'Print Record Target', record_targets_microfilm_print_slip_path(r.id), target: 'blank' %></a>
+        </td>
       </tr>
     <% end %>
   </tbody>

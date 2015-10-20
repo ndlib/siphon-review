@@ -1,24 +1,20 @@
 <div class="print">
-
   <div class="landscape master_negative">
     <h1>Master Negative#:<br><%= @reel.name %></h1>
   </div>
 
   <h2>Reel Contents <br><%= @reel.name %></h2>
   <ol>
-    <% @reel.microfilm_volumns.each do | v | %>
-      <li><%= v.title %></li>
+    <% @reel.microfilm_volumns.each_with_index do | v, index | %>
+      <li><%= v.title %> - <%= v.target_number %></li>
     <% end %>
   </ol>
 
-
-
-  <% @reel.microfilm_volumns.each do | v | %>
+  <% @reel.microfilm_volumns.each_with_index do | v, index | %>
     <div class="volumn_page landscape">
       <h3><%= v.title %></h3>
       <h4><%= v.reformatting_book.publisher %></h4>
-      <h4><%= @reel.name %></h4>
+      <h4><%= v.master_negative %></h4>
     </div>
   <% end %>
-
 </div>
