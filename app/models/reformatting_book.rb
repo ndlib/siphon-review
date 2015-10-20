@@ -46,11 +46,11 @@ class ReformattingBook < ActiveRecord::Base
     self.where(unique_id: number).first
   end
 
-
-
   def self.books_to_be_microfilmed
     self.by_status('decisioned')
   end
 
-
+  def formatted_document_number
+    document_number.rjust(9, "0")
+  end
 end

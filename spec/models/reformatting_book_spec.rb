@@ -127,7 +127,6 @@ describe ReformattingBook do
 
 
   describe :by_document_number do
-
     before(:each) do
       @document = ReformattingBook.new(title: 'new', status: 'new', document_number: 'number')
       @document.save!
@@ -136,11 +135,15 @@ describe ReformattingBook do
       @other.save!
     end
 
-
     it "returns the correct document " do
       expect(ReformattingBook.by_document_number('number')).to eq(@document)
     end
   end
 
-
+  describe "#formatted_document_number" do
+    it "adds leading 0s to the document number" do
+      r = ReformattingBook.new(document_number: "9876")
+      expect(r.formatted_document_number).to eq("000009876")
+    end
+  end
 end
