@@ -16,7 +16,7 @@ class MicrofilmReelList
 
 
   def reels
-    MicrofilmReel.where(status: @status).order(:created_at).collect { | reel | reel.title = reel.title.truncate(100) }
+    MicrofilmReel.where(status: @status).order(:created_at)
   end
 
 

@@ -22,7 +22,7 @@ breadcrumb([ link_to('Microfilm Reels', microfilm_reels_path()), "#{@reel.reel_n
 
 
   <div>
-    <%= select_tag :possible_volumes, options_from_collection_for_select(@reel.potential_volumns, :id, :title), include_blank: true %>
+    <%= select_tag :possible_volumes, options_from_collection_for_select(@reel.potential_volumns, :id, :select_box_option), include_blank: true %>
     <button class="btn add_volume_button">Add Volumne</button>
   </div>
 
