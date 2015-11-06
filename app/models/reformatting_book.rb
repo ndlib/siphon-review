@@ -32,11 +32,13 @@ class ReformattingBook < ActiveRecord::Base
     state :complete
   end
 
+  def select_box_option
+    title.truncate(50)
+  end
 
   def self.by_status(status)
     self.where(status: status)
   end
-
 
   def self.by_document_number(number)
     self.where(document_number: number).first
