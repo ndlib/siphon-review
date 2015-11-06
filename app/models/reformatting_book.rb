@@ -47,7 +47,7 @@ class ReformattingBook < ActiveRecord::Base
   end
 
   def self.books_to_be_microfilmed
-    self.by_status('decisioned')
+    self.by_status('decisioned').order(:title)
   end
 
   def formatted_document_number
