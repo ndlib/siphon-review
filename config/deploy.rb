@@ -28,12 +28,12 @@ desc "Setup for the Pre-Production environment"
 task :pre_production do
   # Customize pre_production configuration
   set :rails_env, 'pre_production'
-  role :app, "siphon-test.library.nd.edu"
+  role :app, "siphon-pprd.library.nd.edu"
 end
 
 desc "Setup for the production environment"
 task :production do
   # Customize production configuration
   set :rails_env, 'production'
-  role :app, "siphonprod.library.nd.edu"
+  role :app, "siphon.library.nd.edu"
 end
