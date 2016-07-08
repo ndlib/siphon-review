@@ -20,17 +20,11 @@ class ReformattingDecisionForm
   attr_accessor :book
 
   attribute :withdraw, Boolean
-  attribute :photodup, Boolean
   attribute :digital, Boolean
   attribute :digital_and_paper_output, Boolean
-  attribute :microfilm_nd, Boolean
-  attribute :digital_link, Boolean
-  attribute :purchase_reprint, Boolean
-  attribute :purchase_microfilm, Boolean
-  attribute :return_to_shelf, Boolean
-  attribute :send_to_special_collections, Boolean
-  attribute :fund_code, String
-  attribute :box, Boolean
+  attribute :no_action, Boolean
+  attribute :retain, Boolean
+  attribute :retain_and_transfer, Boolean
   attribute :notes_from_selector, String
 
   delegate :id, to: :book

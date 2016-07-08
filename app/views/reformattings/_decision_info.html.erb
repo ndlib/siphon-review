@@ -4,20 +4,33 @@
 <h3>Selector Decision</h3>
 
 <ul class="unstyled">
+
+  <% if book_form.book.digital_and_paper_output %>
+    <li><i class="icon icon-check"></i> Digitize and Print Reproduction</li>
+  <% end %>
+
+  <% if book_form.book.digital %>
+    <li><i class="icon icon-check"></i> Digitize Only</li>
+  <% end %>
+
+  <% if book_form.book.no_action %>
+    <li><i class="icon icon-check"></i> No Action</li>
+  <% end %>
+
+  <% if book_form.book.retain %>
+    <li><i class="icon icon-check"></i> Retain</li>
+  <% end %>
+
+  <% if book_form.book.retain_and_transfer %>
+    <li><i class="icon icon-check"></i> Retain and Transfer to Special Collections</li>
+  <% end %>
+
   <% if book_form.book.withdraw %>
     <li><i class="icon icon-check"></i> Withdraw</li>
   <% end %>
 
   <% if book_form.book.photodup %>
     <li><i class="icon icon-check"></i> Photoduplication</li>
-  <% end %>
-
-  <% if book_form.book.digital %>
-    <li><i class="icon icon-check"></i> Digital</li>
-  <% end %>
-
-  <% if book_form.book.digital_and_paper_output %>
-    <li><i class="icon icon-check"></i> Digital and Paper Output</li>
   <% end %>
 
   <% if book_form.book.microfilm_nd %>

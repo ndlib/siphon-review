@@ -16,18 +16,6 @@
     <dt>Internet Archive:</dt>
     <dd><%= link_to_reformatting_url(book_form.book.internet_active_url) %>&nbsp;</dd>
 
-    <dt>Amazon:</dt>
-    <dd><%= link_to_reformatting_url(book_form.book.amazon_url) %>&nbsp;</dd>
-
-    <dt>Abe Books:</dt>
-    <dd><%= link_to_reformatting_url(book_form.book.abe_books_url) %>&nbsp;</dd>
-
-    <dt>Alibris:</dt>
-    <dd><%= link_to_reformatting_url(book_form.book.alibris_url) %>&nbsp;</dd>
-
-    <dt>Microfilm Only:</dt>
-    <dd><%= book_form.book.microfilm_only ? 'Yes' : 'No' %>&nbsp;</dd>
-
 </dl>
 <strong>Notes For Selector:</strong>
 <%= simple_format(book_form.book.notes_for_selector) %>

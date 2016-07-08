@@ -9,6 +9,9 @@ class ReformattingCompletedForm
   attr_accessor :book
 
   attribute :withdraw_completed, Boolean
+  attribute :retain_completed, Boolean
+  attribute :no_action_completed, Boolean
+  attribute :retain_and_transfer_completed, Boolean
   attribute :photodup_completed, Boolean
   attribute :microfilm_nd_completed, Boolean
   attribute :digital_link_completed, Boolean
@@ -49,7 +52,7 @@ class ReformattingCompletedForm
 
 
   def decision_fields
-    [:withdraw, :digital, :digital_and_paper_output, :box, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :send_to_special_collections]
+    [ :digital, :digital_and_paper_output, :no_action, :retain, :retain_and_transfer, :withdraw, :box, :microfilm_nd, :digital_link, :purchase_reprint, :purchase_microfilm, :return_to_shelf, :send_to_special_collections]
   end
 
 

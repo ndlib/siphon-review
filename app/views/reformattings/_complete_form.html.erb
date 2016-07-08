@@ -4,13 +4,17 @@
 </p>
 
 <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
-
+  <% no_actions = true %>
   <% book_form.decision_fields.each do | field | %>
     <% if book_form.book.send(field) %>
+      <% no_actions = false %>
       <%= f.input "#{field}_completed", as: :boolean, inline_label: field.to_s.titleize, label:false %>
     <% end %>
   <% end %>
 
+  <% if no_actions %>
+    <strong> There are no decisions to be recorded.  Press complete to continue. </strong>
+  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit, "Complete", :class => 'btn-primary' %>

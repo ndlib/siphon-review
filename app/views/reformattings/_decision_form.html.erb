@@ -7,17 +7,16 @@
 </p>
 <%= simple_form_for book_form, :url => reformatting_path(book_form.id), :method => 'put' do | f | %>
 
+  <h4>Preservation of Surrogate</h4>
+  <%= f.input :digital_and_paper_output, as: :boolean, inline_label: 'Digital and Print Reproduction', label:false %>
+  <%= f.input :digital, as: :boolean, inline_label: 'Digitize only', label:false %>
+  <%= f.input :no_action, as: :boolean, inline_label: 'No Action', label:false %>
+
+  <h4>Preservation of the Original</h4>
+  <%= f.input :retain, as: :boolean, inline_label: 'Retain', label:false %>
+  <%= f.input :retain_and_transfer, as: :boolean, inline_label: 'Retain & Transfer to Special Collections', label:false %>
   <%= f.input :withdraw, as: :boolean, inline_label: 'Withdraw', label:false %>
-  <%= f.input :digital, as: :boolean, inline_label: 'Digital', label:false %>
-  <%= f.input :digital_and_paper_output, as: :boolean, inline_label: 'Digital and Paper Output', label:false %>
-  <%= f.input :microfilm_nd, as: :boolean, inline_label: 'Microfilm ND', label:false %>
-  <%= f.input :digital_link, as: :boolean, inline_label: 'Digital Link', label:false %>
-  <%= f.input :purchase_reprint, as: :boolean, inline_label: 'Purchase Reprint', label:false %>
-  <%= f.input :purchase_microfilm, as: :boolean, inline_label: 'Purchase Microfilm', label:false %>
-  <%= f.input :box, as: :boolean, inline_label: 'Box', label:false %>
-  <%= f.input :return_to_shelf, as: :boolean, inline_label: 'Return to Shelf', label:false %>
-  <%= f.input :send_to_special_collections, as: :boolean, inline_label: 'Send to Special Collections', label:false %>
-  <%= f.input :fund_code %>
+
   <%= f.input :notes_from_selector, as: :text %>
 
   <div class="form-actions">
