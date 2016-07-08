@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 
 
-gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
-gem "hesburgh_infrastructure", git: 'git@git.library.nd.edu:hesburgh_infrastructure'
+#gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
+gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
 
 gem "therubyracer"
 
