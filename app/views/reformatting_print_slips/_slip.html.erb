@@ -1,7 +1,8 @@
 <h4><%= truncate(book.title, length: 60) %></h4>
 <p>
   <%= book.call_number %><br>
-  System Number: <%= book.document_number %>
+  System Number: <%= book.document_number %><br>
+  <%= Time.now.to_date.to_s(:long_ordinal) %>
 </p>
 <p>
   Loans Since 1998: <%= book.number_of_loans %><br />
@@ -21,7 +22,7 @@
 
 <p>Preservation Surrogate</p>
 <ul class="unstyled" style="padding-bottom: 20px;">
-  <li><%= image_tag 'check-box-empty.gif' %> Digitize and Pring Reproduction</li>
+  <li><%= image_tag 'check-box-empty.gif' %> Digitize and Print Reproduction</li>
   <li><%= image_tag 'check-box-empty.gif' %> Digitize</li>
   <li><%= image_tag 'check-box-empty.gif' %> No Action</li>
 </ul>
