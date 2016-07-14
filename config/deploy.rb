@@ -1,4 +1,6 @@
 # Add the deploy directory to the load path
+set :bundler, "bundler"
+
 $:.unshift File.join(File.dirname(__FILE__),'deploy')
 require 'hesburgh/common'
 require 'hesburgh/git'
