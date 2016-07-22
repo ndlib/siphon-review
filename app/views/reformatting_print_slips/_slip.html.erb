@@ -1,19 +1,18 @@
-<h4><%= truncate(book.title, length: 60) %></h4>
-<p>
+<p>  <%= Time.now.to_date.to_s(:long_ordinal) %> </p>
+<h4 style="margin-bottom: 0"><%= truncate(book.title, length: 60) %></h4>
+<p style="margin-top: 5px">
   <%= book.call_number %><br>
   System Number: <%= book.document_number %><br>
-  <%= Time.now.to_date.to_s(:long_ordinal) %>
 </p>
 <p>
   Loans Since 1998: <%= book.number_of_loans %><br />
   ND Holdings: <%= book.nd_holdings %><br />
-  Library Holdings per WorldCat: <%= pluralize(book.number_of_libraries, 'library', 'libraries') %> hold this title.</p>
+  Library Holdings per WorldCat: <%= pluralize(book.number_of_libraries, 'library', 'libraries') %> hold this edition.</p>
   Internet Archive: <%= print_reformatting_url(book.internet_active_url) %><br />
   Hathi Trust: <%= print_reformatting_url(book.hathi_trust_url) %>
 </p>
 
 <strong>Notes:</strong>
-
 <%= simple_format(book.notes_for_selector) %>
 
 <hr>
@@ -26,7 +25,7 @@
   <li><%= image_tag 'check-box-empty.gif' %> Digitize</li>
   <li><%= image_tag 'check-box-empty.gif' %> No Action</li>
 </ul>
-<p>Preservation of the Original</p>
+<p>Preservation of Original Volume</p>
 <ul class="unstyled" style="padding-bottom: 20px;">
   <li><%= image_tag 'check-box-empty.gif' %> Retain</li>
   <li><%= image_tag 'check-box-empty.gif' %> Retain and Transfer to Special Collections</li>

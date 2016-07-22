@@ -4,6 +4,7 @@
 <div class="two columns">
   <h4>Useful Links</h4>
   <ul class="unstyled">
+    <li><%= FrbrGroupSearchLink.new(@form.book.frbr_group_id, @form.book.document_number).link %></li>
     <li><%= WorldCatOclcNumberLink.new(@form.book.oclc_number).link %></li>
     <li><%= HathiTrustSearchLink.new(@form.book.title).link %></li>
     <li><%= InternetArchiveSearchLink.new(@form.book.title).link %></li>
