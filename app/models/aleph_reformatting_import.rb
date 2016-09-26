@@ -33,10 +33,10 @@ class AlephReformattingImport
   def import_item!
     @import_record = ReformattingBook.new(@original_record)
     @import_record.status ||= :new
-    
-    @import_record.save!
 
     SynchronizeBookWithCatalog.new(@import_record).synchronize!
+
+    @import_record.save!
 
     @import_record
   end

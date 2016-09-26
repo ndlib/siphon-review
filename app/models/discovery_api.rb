@@ -1,7 +1,7 @@
 require "json"
+include DictionaryHelper
 
 class DiscoveryApi
-
   attr_accessor :json_result, :id
 
   def self.search_by_id(id)
@@ -30,64 +30,67 @@ class DiscoveryApi
 
 
   def title
-    @json_result["display"]["title"].to_s.truncate(250, :separator => ' ')
+    get_hierarchy(@json_result, ["display", "title"], "").to_s.truncate(250, :separator => ' ')
   end
 
 
   def type
-    @json_result['type'].downcase
+    get(@json_result, 'type', "").downcase
   end
 
 
   def creator_contributor
-    @json_result['display']['creator_contributor'].to_s.truncate(250, :separator => ' ')
+    get_hierarchy(@json_result, ['display', 'creator_contributor'], "").to_s.truncate(250, :separator => ' ')
   end
 
 
   def details
-    @json_result['display']['details'].to_s.truncate(250, :separator => ' ')
+    get_hierarchy(@json_result, ['display', 'details'], "").to_s.truncate(250, :separator => ' ')
   end
 
 
   def publisher_provider
-    @json_result['display']['publisher_provider'].to_s.truncate(250, :separator => ' ')
+    get_hierarchy(@json_result, ['display', 'publisher_provider'], "").to_s.truncate(250, :separator => ' ')
   end
 
 
   def availability
-    @json_result['display']['availability']
+    get_hierarchy(@json_result, ['display', 'availability'], "")
   end
 
 
   def available_library
-    @json_result['display']['available_library']
+    get_hierarchy(@json_resultl, ['display', 'available_library'], "")
   end
 
 
   def fulltext_available?
-    @json_result['fulltext_available']
+    get(@json_result, 'fulltext_available', false)
   end
 
 
   def fulltext_url
-    @json_result['links']['fulltext_url']
+    get_hierarchy(@json_result, ['links', 'fulltext_url'], "")
   end
 
 
   def number_of_loans
-    holdings['number_of_loans']
+    get(holdings, 'number_of_loans', 0)
   end
 
 
   def oclc_number
-    @json_result['oclc']
+    get(@json_result, 'oclc', 0)
   end
 
 
   def frbr_group_id
-    @json_result['primo']['facets']['frbrgroupid']
+    get_hierarchy(@json_result, ['primo', 'facets', 'frbrgroupid'], nil)
   end
 
+  def check_record
+    check_dictionary_flat(@json_result, ['primo', 'display'], "#{@id}")
+  end
 
   private
 
@@ -97,6 +100,9 @@ class DiscoveryApi
 
 
     def holdings
+      if !check_dictionary_key(@json_result, 'holdings', "#{@id}") then
+        return nil
+      end
       @holdings ||= @json_result['holdings'].find { | record | record['record_id'] == @id }
     end
 
