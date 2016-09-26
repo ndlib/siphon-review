@@ -6,8 +6,7 @@ class SynchronizeBookWithCatalog
     @book = book
   end
 
-
-  def synchronize!
+  def synchronize
     catalog_record.check_record
 
     @book.oclc_number= catalog_record.oclc_number
@@ -15,6 +14,12 @@ class SynchronizeBookWithCatalog
     @book.number_of_loans= catalog_record.number_of_loans
     @book.creator_contributor = catalog_record.creator_contributor
     @book.publisher = catalog_record.publisher_provider
+  end
+
+
+  def synchronize!
+    synchronize
+    @book.save!
   end
 
 
