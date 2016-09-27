@@ -25,6 +25,8 @@ set :application, 'siphon'
 set :repository,  "https://github.com/ndlib/siphon.git"
 # set :application_symlinks, ['config/initializers/devise_secret.rb']
 
+set :linked_files, %w{config/database.yml config/secrets.yml}
+
 set :hipchat_token, "c290a842542721d6aee18a3cb900a1"
 set :hipchat_room_name, "Web and Software Engineering"
 set :hipchat_announce, false # notify users?
