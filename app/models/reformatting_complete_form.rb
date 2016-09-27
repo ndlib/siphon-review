@@ -1,6 +1,6 @@
 class ReformattingCompleteForm
 
-  include Virtus
+  include Virtus.model
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion

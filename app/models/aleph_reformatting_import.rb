@@ -5,7 +5,6 @@ class AlephReformattingImport
 
   def initialize(record)
     @original_record = record
-    @import_record = import_record
   end
 
 
@@ -22,27 +21,25 @@ class AlephReformattingImport
 
 
   def record_needs_import?
-    @import_record.nil?
+    import_record.nil?
   end
 
   def update_item!
-    @import_record.attributes = @original_record
-    @import_record.save!
+    import_record.attributes = @original_record
+    import_record.save!
   end
 
   def import_item!
     @import_record = ReformattingBook.new(@original_record)
-    @import_record.status ||= :new
+    SynchronizeBookWithCatalog.new(import_record).synchronize
 
-    SynchronizeBookWithCatalog.new(@import_record).synchronize
+    import_record.save!
 
-    @import_record.save!
-
-    @import_record
+    import_record
   end
 
 
   def import_record
-    ReformattingBook.by_unique_id(@original_record[:unique_id])
+    @import_record ||= ReformattingBook.by_unique_id(@original_record[:unique_id])
   end
 end

@@ -25,13 +25,13 @@ describe EditMicrofilmReelForm do
 
 
     it "sets completed to be false if the mircofilm reel is open" do
-      expect(EditMicrofilmReelForm.build_from_params(@controller).complete).to be_false
+      expect(EditMicrofilmReelForm.build_from_params(@controller).complete).to be_falsey
     end
 
 
     it "sets completed to be true if the mircofilm reel is closed" do
       @reel.stub(:status).and_return('closed')
-      expect(EditMicrofilmReelForm.build_from_params(@controller).complete).to be_true
+      expect(EditMicrofilmReelForm.build_from_params(@controller).complete).to be_truthy
     end
   end
 
@@ -128,15 +128,6 @@ describe EditMicrofilmReelForm do
         expect(@form.microfilm_reel.microfilm_volumns.first.order).to eq(0)
         expect(@form.microfilm_reel.microfilm_volumns.last.reformatting_book_id).to eq(3)
         expect(@form.microfilm_reel.microfilm_volumns.last.order).to eq(1)
-      end
-
-
-      it "saves a new title for the book if it is not the same as the title of the other original record" do
-        ReformattingBook.stub(:find).with(1).and_return(double(ReformattingBook, title: 'name1'))
-        ReformattingBook.stub(:find).with(3).and_return(double(ReformattingBook, title: 'not name2'))
-
-        expect(@form.microfilm_reel.microfilm_volumns.first.title).to eq('name1')
-        expect(@form.microfilm_reel.microfilm_volumns.last.title).to eq('not name2')
       end
     end
 

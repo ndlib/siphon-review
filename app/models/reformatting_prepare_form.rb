@@ -2,7 +2,7 @@
 class ReformattingPrepareForm
   include RailsHelpers
 
-  include Virtus
+  include Virtus.model
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion

@@ -2,16 +2,40 @@ require 'spec_helper'
 
 describe DiscoveryApi do
   let(:test_search) { "ndu_aleph000188916" }
+  let(:test_data) do
+    {
+      "type" => 'book',
+      "display" => {
+        "title" => "The once and future king.",
+        "creator_contributor" => "T. H. White [Terence Hanbury], 1906-1964.",
+        "details" => "",
+        "publisher_provider" => "New York, Putnam 1958",
+        "availability" => "Available",
+        "available_library" => "Notre Dame, Hesburgh Library General Collection (PR 6045 .H676 O5 )",
+      },
+      "id" => test_search,
+      "oclc" => "58010760",
+      "primo" => {
+        "facets" => {
+          "frbrgroupid" => "73181443",
+        },
+      },
+      "holdings" => [{
+        "record_id" => test_search,
+        "number_of_loans" => "37"
+      }]
+    }
+  end
+
+  before(:each) do
+    allow_any_instance_of(DiscoveryApi).to receive(:make_request).with(test_search).and_return(test_data)
+  end
 
   describe :search_by_ids do
 
     it "searchs by a single id" do
-
-      VCR.use_cassette 'discovery/search_single_id_response' do
-        res = DiscoveryApi.search_by_id(test_search)
-        res.title.should == "The once and future king."
-      end
-
+      res = DiscoveryApi.search_by_id(test_search)
+      res.title.should == "The once and future king."
     end
 
   end
@@ -20,9 +44,7 @@ describe DiscoveryApi do
   describe "attributes" do
 
     before(:each) do
-      VCR.use_cassette 'discovery/attributes_single_id_response' do
-        @discovery_api = DiscoveryApi.search_by_id(test_search)
-      end
+      @discovery_api = DiscoveryApi.search_by_id(test_search)
     end
 
     it "has a type" do
@@ -83,25 +105,19 @@ describe DiscoveryApi do
 
 
   describe :fix_id do
+    before(:each) do
+      expect_any_instance_of(DiscoveryApi).to receive(:make_request)
+    end
 
     it "adds ndu aleph if it is not there" do
-      VCR.use_cassette 'discovery/test_no_ndu_aleph' do
-
-        res = DiscoveryApi.search_by_id("000188916")
-        expect(res.id).to eq("ndu_aleph000188916")
-
-      end
+      res = DiscoveryApi.search_by_id("000188916")
+      expect(res.id).to eq("ndu_aleph000188916")
     end
 
 
     it "justifies if there are no 0s" do
-
-      VCR.use_cassette 'discovery/test_justify_ndu_aleph' do
-
-        res = DiscoveryApi.search_by_id("188916")
-        expect(res.id).to eq("ndu_aleph000188916")
-
-      end
+      res = DiscoveryApi.search_by_id("188916")
+      expect(res.id).to eq("ndu_aleph000188916")
     end
 
   end
@@ -109,9 +125,7 @@ describe DiscoveryApi do
 
   describe :truncation do
     before(:each) do
-      VCR.use_cassette 'discovery/truncation_single_id_response' do
-        @discovery_api = DiscoveryApi.search_by_id(test_search)
-      end
+      @discovery_api = DiscoveryApi.search_by_id(test_search)
     end
 
     it "truncates the publisher_provider" do

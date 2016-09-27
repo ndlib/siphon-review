@@ -1,23 +1,27 @@
 
-
-describe AlephReformattingImport do
+RSpec.describe AlephReformattingImport do
   before(:each) do
-    @import_data =     { :title => 'title', :document_number => 'document_number', :call_number => 'call number', :barcode => 'barcode' }
+    @import_data = { :unique_id => 0, :title => 'title', :document_number => 'document_number', :call_number => 'call number', :barcode => 'barcode' }
 
-    SynchronizeBookWithCatalog.any_instance.stub(:synchronize!).and_return(true)
+    SynchronizeBookWithCatalog.any_instance.stub(:synchronize).and_return(true)
+    ReformattingBook.any_instance.stub(:save!).and_return(true)
   end
 
+  subject { AlephReformattingImport.new(@import_data).import! }
 
   describe :new_record do
+    before(:each) do
+      expect(ReformattingBook).to receive(:by_unique_id).with(0).and_return(nil)
+    end
 
     it "Creates a new record if the item does not already exist" do
-      AlephReformattingImport.new(@import_data).import!
-      expect(ReformattingBook.where(document_number: 'document_number').size).to eq(1)
+      expect_any_instance_of(AlephReformattingImport).to receive(:import_item!)
+      subject
     end
 
 
     it "returns true when a new item is created" do
-      expect(AlephReformattingImport.new(@import_data).import!).to be_true
+      expect(subject).to be_truthy
     end
 
 
@@ -30,26 +34,30 @@ describe AlephReformattingImport do
 
 
     it "calls synchronize on SynchronizeBookWithCatalog " do
-      SynchronizeBookWithCatalog.any_instance.should_receive(:synchronize!)
+      SynchronizeBookWithCatalog.any_instance.should_receive(:synchronize)
 
-      AlephReformattingImport.new(@import_data).import!
+      subject
     end
   end
 
   describe :existing_record do
     before(:each) do
-      ReformattingBook.stub(:where).and_return([double(ReformattingBook, id: 1, document_number: 'already_imported')])
+      book = double(ReformattingBook, id: 1, document_number: 'already_imported')
+      allow(book).to receive(:attributes=).with(any_args)
+      allow(book).to receive(:save!)
+
+      expect(ReformattingBook).to receive(:by_unique_id)
+        .with(0).and_return(book)
     end
 
-
-    it "does not create a new item if the item already exists" do
-      ReformattingBook.any_instance.should_not_receive(:save!)
-      AlephReformattingImport.new(@import_data).import!
+    it "updates existing item if the item already exists" do
+      expect_any_instance_of(AlephReformattingImport).to receive(:update_item!)
+      subject
     end
 
 
     it "returns false if the import! is not set" do
-      expect(AlephReformattingImport.new(@import_data).import!).to be_false
+      expect(subject).to be_falsey
     end
 
     it "stores the found record in the import object" do

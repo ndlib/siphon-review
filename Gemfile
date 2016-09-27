@@ -109,8 +109,10 @@ group :test do
   gem 'guard-spork'
   gem 'guard-shell'
 
-  gem 'vcr'
   gem 'webmock'
+
+  gem 'test-unit'
+  gem 'minitest'
 end
 
 group :development, :test do

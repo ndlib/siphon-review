@@ -60,7 +60,7 @@ class DiscoveryApi
 
 
   def available_library
-    get_hierarchy(@json_resultl, ['display', 'available_library'], "")
+    get_hierarchy(@json_result, ['display', 'available_library'], "")
   end
 
 
@@ -75,12 +75,12 @@ class DiscoveryApi
 
 
   def number_of_loans
-    get(holdings, 'number_of_loans', 0)
+    get(holdings, 'number_of_loans', "0")
   end
 
 
   def oclc_number
-    get(@json_result, 'oclc', 0)
+    get(@json_result, 'oclc', "0")
   end
 
 
