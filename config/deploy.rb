@@ -10,6 +10,9 @@ require 'hesburgh/rails_db'
 require 'hesburgh/jenkins'
 require 'hesburgh/prompt_branch'
 require 'hesburgh/whenever'
+
+require "airbrake/capistrano3"
+
 begin
   #require 'hipchat/capistrano'
   #require 'new_relic/recipes'

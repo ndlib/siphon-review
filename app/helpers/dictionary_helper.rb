@@ -6,7 +6,7 @@ module DictionaryHelper
   end
 
   def get_checked(dict, key, defaultVal = nil, context = "")
-    check_dictionary(dict, key, context)
+    check_dictionary_key(dict, key, context)
     get(dict, key, defaultVal)
   end
 

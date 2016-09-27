@@ -89,7 +89,8 @@ class DiscoveryApi
   end
 
   def check_record
-    check_dictionary_flat(@json_result, ['primo', 'display'], "#{@id}")
+    # these are the two base elements that must be present
+    check_dictionary_flat(@json_result, ['primo', 'display'], "#{@id}", true)
   end
 
   private

@@ -54,6 +54,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# For Errbit
+gem "airbrake"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -110,9 +113,6 @@ group :test do
   gem 'guard-shell'
 
   gem 'webmock'
-
-  gem 'test-unit'
-  gem 'minitest'
 end
 
 group :development, :test do
