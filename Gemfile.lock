@@ -113,7 +113,7 @@ GEM
       http_parser.rb (~> 0.6.0)
     equalizer (0.0.11)
     erubis (2.7.0)
-    eventmachine (1.0.8)
+    eventmachine (1.2.5)
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
@@ -195,7 +195,7 @@ GEM
       rspec (>= 2.0, < 4.0)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libv8 (3.16.14.7)
+    libv8 (3.16.14.19)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -400,7 +400,7 @@ DEPENDENCIES
   jquery-rails
   json_spec
   launchy (~> 2.1.0)
-  libv8 (= 3.16.14.7)
+  libv8 (= 3.16.14.19)
   mysql2 (~> 0.3.11)
   nested_form
   net-ldap
@@ -426,4 +426,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.13.0
+   1.14.6

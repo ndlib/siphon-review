@@ -79,7 +79,7 @@ gem 'rb-readline'
 gem "whenever", :require => false
 
 # used to fix broken osx builds.
-gem "libv8", "3.16.14.7"
+gem "libv8", "3.16.14.19"
 
 gem "faraday"
 gem "faraday_middleware"

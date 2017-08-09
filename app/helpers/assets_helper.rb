@@ -17,62 +17,6 @@ module AssetsHelper
     12 => "twelve"
   }
 
-  def include_branch_ssi(filepath)
-    include_ssi("#{active_branch_path}#{clean_ssi_path(filepath)}")
-  end
-
-  # Includes the relevant library SSI file from http://library.nd.edu/ssi/<filename>.shtml
-  def include_ssi(filepath)
-    render :partial => "/layouts/hesburgh_assets/include_ssi", :locals => {:filepath => clean_ssi_path(filepath)}
-  end
-
-  def clean_ssi_path(filepath)
-    if !(filepath =~ /^\//)
-      filepath = "/#{filepath}"
-    end
-    filepath
-  end
-
-  def get_ssi_contents(url)
-    require 'open-uri'
-    f = open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}")
-    contents = f.read.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
-    contents
-  end
-
-  def read_ssi_file(filepath)
-    contents = get_ssi_contents(ssi_url(filepath))
-    contents = link_sub(contents)
-    contents
-  end
-
-  def ssi_url(filepath)
-    "http://library.nd.edu#{filepath}"
-  end
-
-##
-# Includes the relevant library SSI file from http://library.nd.edu/ssi/<filename>.shtml
-  def rarebooks_include_ssi(filepath)
-    render :partial => "/layouts/hesburgh_assets/rarebooks/include_ssi", :locals => {:filepath => rarebooks_clean_ssi_path(filepath)}
-  end
-
-  def rarebooks_clean_ssi_path(filepath)
-    if !(filepath =~ /^\//)
-      filepath = "/#{filepath}"
-    end
-    filepath
-  end
-
-  def rarebooks_read_ssi_file(filepath)
-    contents = get_ssi_contents(rarebooks_ssi_url(filepath))
-    contents = rarebooks_link_sub(contents)
-    contents
-  end
-
-  def rarebooks_ssi_url(filepath)
-    "http://rarebooks.library.nd.edu#{filepath}"
-  end
-
 ##
   def active_branch_path
     if active_branch_code == 'main'

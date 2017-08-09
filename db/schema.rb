@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20150305145252) do
   create_table "microfilm_reels", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "status",     limit: 255
-    t.boolean  "printed",    limit: 1
+    t.boolean  "printed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "microfilm_volumns", force: :cascade do |t|
     t.integer "reformatting_book_id", limit: 4
-    t.boolean "partial_programmed",   limit: 1
+    t.boolean "partial_programmed"
     t.string  "print_title",          limit: 255
     t.integer "microfilm_reel_id",    limit: 4
     t.integer "order",                limit: 4
