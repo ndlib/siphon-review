@@ -1,4 +1,4 @@
-require 'net/http'
+require "open-uri"
 require 'uri'
 require 'nokogiri'
 
@@ -34,12 +34,7 @@ class AlephReformattingImporter
 
 
   def xml_from_source
-    url = URI.parse(file_name)
-    Net::HTTP.start(url.host, url.port) do |http|
-      get = Net::HTTP::Get.new(url.request_uri)
-      response = http.request(get)
-      response.body
-    end
+    URI.parse(file_name).read
   end
 
 

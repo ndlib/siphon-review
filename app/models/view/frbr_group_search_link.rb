@@ -9,11 +9,12 @@ class FrbrGroupSearchLink
 
 
   def link
-    helpers.link_to "FRBR Group", url, target: '_blank'
+    helpers.link_to "Catalog Search", url, target: '_blank'
   end
 
 
   def url
-    "http://onesearch.library.nd.edu/primo_library/libweb/action/dlSearch.do?cs=frb&frbg=#{@frbr_group_id}&fctN=facet_frbrgroupid&fctV=#{@frbr_group_id}&doc=#{@document_id}&dscnt=0&onCampus=false&query=any%2Ccontains%2C#{@frbr_group_id}&tab=nd_campus&dym=true&highlight=true&ct=search&mode=Basic&search_scope=nd_campus&vl(16833498UI0)=any&indx=1&displayField=title&bulkSize=10&vl(freeText0)=catcher#{@frbr_group_id}&fn=search&vid=NDU&institution=NDU"
+    "http://onesearch.library.nd.edu/primo-explore/search?query=any,contains,#{@document_id}&institution=NDU&vid=NDU&tab=nd_campus&search_scope=nd_campus&mode=basic&displayMode=full&bulkSize=10&highlight=true&dum=true&displayField=all&pcAvailabiltyMode=true"
   end
+
 end
