@@ -1,0 +1,28 @@
+##########################################
+# Shared settings
+##########################################
+
+mysql_settings: &mysql_settings
+  adapter: mysql2
+  pool:    5
+  timeout: 5000
+  encoding: utf8
+
+##########################################
+# ENVironments
+##########################################
+
+development:
+  <<: *mysql_settings
+  database: <%= ENV["SIPHON_PREP_DB"] %>
+  host:     <%= ENV["SIPHON_PREP_HOST"] %>
+  username: <%= ENV["SIPHON_PREP_USER"] %>
+  password: <%= ENV["SIPHON_PREP_PASSWORD"] %>
+
+production:
+
+  <<: *mysql_settings
+  database: <%= ENV["SIPHON_PROD_DB"] %>
+  host:     <%= ENV["SIPHON_PROD_HOST"] %>
+  username: <%= ENV["SIPHON_PROD_USER"] %>
+  password: <%= ENV["SIPHON_PROD_PASSWORD"] %>
