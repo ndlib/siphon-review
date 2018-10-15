@@ -26,4 +26,5 @@ ARG DEFAULT_PORT="3000"
 ENV PORT=$DEFAULT_PORT
 EXPOSE $PORT
 
+# The CMD will need to be updated - it is not prod ready
 CMD chmod u+x docker/start.sh && docker/start.sh
