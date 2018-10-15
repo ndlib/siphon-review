@@ -16,7 +16,7 @@ Note: The if you change the PORT env, you will need to match the port in the -p 
 
 If you want to simulate Chamber pulling any secrets from SSM, you will need to provide AWS credentials as outlined above.
 
-Otherwise, you will need to create the /docker/dev_env file as needed. The environment variables that are expected can be found in [the database.yml file for the Ruby application.](config/database.yml)
+Otherwise, you will need to create the /docker/dev_env file as needed. The environment variables that are expected can be found in [the database.yml file for the Ruby application.](../config/database.yml)
 
 
 # Running in production
