@@ -10,6 +10,10 @@ RUN bundle update
 COPY . /siphon
 WORKDIR /siphon
 
+ENV CHAMBER_KMS_KEY_ALIAS=aws/ssm
+ARG DEFAULT_ENV_SSM_PATH="all/siphon/prod"
+ENV ENV_SSM_PATH=$DEFAULT_ENV_SSM_PATH
+
 RUN openssl req -nodes -x509 -new -keyout self_signed.key -out self_signed.cert \
   -subj "/C=US/ST=IN/O=University of Notre Dame/OU=LIBITS"
 
