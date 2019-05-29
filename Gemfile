@@ -13,7 +13,7 @@ gem "therubyracer"
 gem 'american_date'
 
 # db backends
-gem 'mysql2', "~> 0.3.11"
+gem 'mysql2'
 
 
 # authentication
