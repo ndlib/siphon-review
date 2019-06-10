@@ -1,6 +1,9 @@
 Siphon::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.force_ssl = true
+  config.cas_base = 'https://login-test.cc.nd.edu/cas'
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -28,9 +31,9 @@ Siphon::Application.configure do
   config.assets.debug = true
 
 
-  config.reserves_cas_base                = 'https://cas.library.nd.edu/cas'
-  config.reserves_cas_validate            = 'https://cas.library.nd.edu/cas/serviceValidate'
-  config.reserves_cas_logout              = 'https://cas.library.nd.edu/cas/logout'
+  config.reserves_cas_base                = 'https://login-test.cc.nd.edu/cas'
+  config.reserves_cas_validate            = 'https://login-test.cc.nd.edu/cas/serviceValidate'
+  config.reserves_cas_logout              = 'https://login-test.cc.nd.edu/cas/logout'
 
   config.api_url                          = "https://apipprd.library.nd.edu/"
   config.api_token                        = "8CfWTb1zyDVs1eXN4npN"
