@@ -4,24 +4,18 @@ gem 'bigdecimal'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "~> 4.2.0"
 
-
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
-
 gem "therubyracer"
-
-
 gem 'american_date'
 
 # db backends
 gem 'mysql2'
 
-
 # authentication
 gem 'rubycas-client'
 gem 'devise'
 gem 'devise_cas_authenticatable'
-
 
 # LDAP lookups
 gem 'net-ldap'
