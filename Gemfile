@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bigdecimal'
+gem 'activerecord'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2'
 
@@ -55,7 +56,7 @@ gem "airbrake"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'jquery-datatables-rails', '1.11.2'
+gem 'jquery-datatables-rails', '~>1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
