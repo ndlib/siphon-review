@@ -5,50 +5,49 @@ GIT
     hesburgh_infrastructure (0.2.5)
       rails
 
-GIT
-  remote: git://github.com/sporkrb/spork-rails.git
-  revision: 0dd45e59d3237b4c8f9efc215b46d9c07072a95e
-  specs:
-    spork-rails (4.0.0)
-      rails (>= 3.0.0, < 5)
-      spork (>= 1.0rc0)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.2.11.1)
-      actionpack (= 4.2.11.1)
-      actionview (= 4.2.11.1)
-      activejob (= 4.2.11.1)
+    actioncable (5.2.3)
+      actionpack (= 5.2.3)
+      nio4r (~> 2.0)
+      websocket-driver (>= 0.6.1)
+    actionmailer (5.2.3)
+      actionpack (= 5.2.3)
+      actionview (= 5.2.3)
+      activejob (= 5.2.3)
       mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (4.2.11.1)
-      actionview (= 4.2.11.1)
-      activesupport (= 4.2.11.1)
-      rack (~> 1.6)
-      rack-test (~> 0.6.2)
-      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-dom-testing (~> 2.0)
+    actionpack (5.2.3)
+      actionview (= 5.2.3)
+      activesupport (= 5.2.3)
+      rack (~> 2.0)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (4.2.11.1)
-      activesupport (= 4.2.11.1)
+    actionview (5.2.3)
+      activesupport (= 5.2.3)
       builder (~> 3.1)
-      erubis (~> 2.7.0)
-      rails-dom-testing (~> 1.0, >= 1.0.5)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (4.2.11.1)
-      activesupport (= 4.2.11.1)
-      globalid (>= 0.3.0)
-    activemodel (4.2.11.1)
-      activesupport (= 4.2.11.1)
-      builder (~> 3.1)
-    activerecord (4.2.11.1)
-      activemodel (= 4.2.11.1)
-      activesupport (= 4.2.11.1)
-      arel (~> 6.0)
-    activesupport (4.2.11.1)
-      i18n (~> 0.7)
+    activejob (5.2.3)
+      activesupport (= 5.2.3)
+      globalid (>= 0.3.6)
+    activemodel (5.2.3)
+      activesupport (= 5.2.3)
+    activerecord (5.2.3)
+      activemodel (= 5.2.3)
+      activesupport (= 5.2.3)
+      arel (>= 9.0)
+    activestorage (5.2.3)
+      actionpack (= 5.2.3)
+      activerecord (= 5.2.3)
+      marcel (~> 0.3.1)
+    activesupport (5.2.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
@@ -59,7 +58,7 @@ GEM
     airbrussh (1.3.1)
       sshkit (>= 1.6.1, != 1.7.0)
     american_date (1.1.1)
-    arel (6.0.4)
+    arel (9.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -87,9 +86,9 @@ GEM
     coderay (1.1.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    coffee-rails (4.0.1)
+    coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
+      railties (>= 4.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -115,16 +114,16 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     equalizer (0.0.11)
-    erubis (2.7.0)
+    erubi (1.8.0)
     eventmachine (1.2.7)
-    exception_notification (4.0.1)
-      actionmailer (>= 3.0.4)
-      activesupport (>= 3.0.4)
+    exception_notification (4.3.0)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
-    factory_girl (2.6.4)
-      activesupport (>= 2.3.9)
-    factory_girl_rails (1.7.0)
-      factory_girl (~> 2.6.0)
+    factory_girl (4.9.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.9.0)
+      factory_girl (~> 4.9.0)
       railties (>= 3.0.0)
     faker (1.9.3)
       i18n (>= 0.7)
@@ -179,14 +178,12 @@ GEM
       guard-compat (~> 1.0)
       spork (>= 0.8.4)
     hashdiff (0.4.0)
-    hike (1.2.3)
     http_parser.rb (0.6.0)
-    i18n (0.9.5)
+    i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    jbuilder (1.5.3)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
+    jbuilder (2.9.1)
+      activesupport (>= 4.2.0)
     jquery-datatables-rails (1.11.2)
       jquery-rails
     jquery-rails (4.3.3)
@@ -196,7 +193,7 @@ GEM
     json_spec (1.1.5)
       multi_json (~> 1.0)
       rspec (>= 2.0, < 4.0)
-    launchy (2.1.2)
+    launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.19)
     listen (3.1.5)
@@ -209,6 +206,8 @@ GEM
     lumberjack (1.0.13)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    marcel (0.3.3)
+      mimemagic (~> 0.3.2)
     method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
@@ -226,6 +225,7 @@ GEM
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
+    nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
@@ -244,33 +244,33 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.1.0)
-    rack (1.6.11)
-    rack-test (0.6.3)
-      rack (>= 1.0)
-    rails (4.2.11.1)
-      actionmailer (= 4.2.11.1)
-      actionpack (= 4.2.11.1)
-      actionview (= 4.2.11.1)
-      activejob (= 4.2.11.1)
-      activemodel (= 4.2.11.1)
-      activerecord (= 4.2.11.1)
-      activesupport (= 4.2.11.1)
-      bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.11.1)
-      sprockets-rails
-    rails-deprecated_sanitizer (1.0.3)
-      activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.9)
-      activesupport (>= 4.2.0, < 5.0)
-      nokogiri (~> 1.6)
-      rails-deprecated_sanitizer (>= 1.0.1)
+    rack (2.0.7)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
+    rails (5.2.3)
+      actioncable (= 5.2.3)
+      actionmailer (= 5.2.3)
+      actionpack (= 5.2.3)
+      actionview (= 5.2.3)
+      activejob (= 5.2.3)
+      activemodel (= 5.2.3)
+      activerecord (= 5.2.3)
+      activestorage (= 5.2.3)
+      activesupport (= 5.2.3)
+      bundler (>= 1.3.0)
+      railties (= 5.2.3)
+      sprockets-rails (>= 2.0.0)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    railties (4.2.11.1)
-      actionpack (= 4.2.11.1)
-      activesupport (= 4.2.11.1)
+    railties (5.2.3)
+      actionpack (= 5.2.3)
+      activesupport (= 5.2.3)
+      method_source
       rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
+      thor (>= 0.19.0, < 2.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -292,7 +292,7 @@ GEM
     rspec-expectations (3.8.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
-    rspec-mocks (3.8.0)
+    rspec-mocks (3.8.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-rails (3.8.2)
@@ -309,12 +309,17 @@ GEM
       activesupport
     rubyzip (1.2.3)
     safe_yaml (1.0.5)
-    sass (3.2.19)
-    sass-rails (4.0.5)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.2)
-      sprockets (~> 2.8, < 3.0)
-      sprockets-rails (~> 2.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    sass-rails (5.0.7)
+      railties (>= 4.0.0, < 6)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     sdoc (1.0.0)
       rdoc (>= 5.0)
     selenium-webdriver (3.142.3)
@@ -325,15 +330,13 @@ GEM
       actionpack (> 4)
       activemodel (> 4)
     spork (1.0.0rc4)
-    sprockets (2.12.5)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
-      rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.3.3)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      sprockets (>= 2.8, < 4.0)
+    sprockets (3.7.2)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
+    sprockets-rails (3.2.1)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0)
     sshkit (1.18.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -345,7 +348,7 @@ GEM
       ref
     thor (0.20.3)
     thread_safe (0.3.6)
-    tilt (1.4.1)
+    tilt (2.0.9)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -364,6 +367,9 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    websocket-driver (0.7.1)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.4)
     whenever (0.11.0)
       chronic (>= 0.6.3)
     xpath (3.2.0)
@@ -379,13 +385,13 @@ DEPENDENCIES
   bigdecimal
   capistrano
   capybara
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   database_cleaner
   devise
   devise_cas_authenticatable
-  exception_notification (~> 4.0.0)
-  factory_girl (~> 2.6.0)
-  factory_girl_rails (~> 1.7.0)
+  exception_notification
+  factory_girl
+  factory_girl_rails
   faker
   faraday
   faraday_middleware
@@ -399,11 +405,11 @@ DEPENDENCIES
   guard-shell
   guard-spork
   hesburgh_infrastructure!
-  jbuilder (~> 1.2)
+  jbuilder
   jquery-datatables-rails (= 1.11.2)
   jquery-rails
   json_spec
-  launchy (~> 2.1.0)
+  launchy
   libv8 (= 3.16.14.19)
   mysql2
   nested_form
@@ -411,20 +417,19 @@ DEPENDENCIES
   nokogiri
   paperclip
   pry-rails
-  rails (~> 4.2.0)
+  rails
   rb-fsevent
   rb-readline
   rspec-rails
   rubycas-client
-  sass-rails (~> 4.0.0)
+  sass-rails
   sdoc
   selenium-webdriver
   simple_form
-  spork-rails!
   state_machine
   therubyracer
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier
   virtus
   webmock
   whenever
