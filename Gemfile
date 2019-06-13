@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bigdecimal'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '~> 5.2'
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
