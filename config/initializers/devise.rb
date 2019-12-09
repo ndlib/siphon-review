@@ -2,10 +2,6 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.cas_base_url = Rails.configuration.reserves_cas_base
-  config.cas_validate_url = Rails.configuration.reserves_cas_validate
-  config.cas_logout_url = Rails.configuration.reserves_cas_logout
-
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
@@ -235,4 +231,17 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  # Okta
+  require 'omniauth-oktaoauth'
+  okta_issuer = Rails.application.secrets.okta["base_auth_url"] + Rails.application.secrets.okta["auth_server_id"]
+  config.omniauth(:oktaoauth,
+                Rails.application.secrets.okta["client_id"],
+                Rails.application.secrets.okta["client_secret"],
+                :scope => 'openid profile email netid',
+                :fields => ['profile', 'email', 'netid'],
+                :client_options => {site: okta_issuer, authorize_url: okta_issuer + "/v1/authorize", token_url: okta_issuer + "/v1/token"},
+                :auth_server_id => Rails.application.secrets.okta["auth_server_id"],
+                :issuer => okta_issuer,
+                :strategy_class => OmniAuth::Strategies::Oktaoauth)
 end
