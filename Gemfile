@@ -19,8 +19,8 @@ gem 'mysql2'
 # authentication
 gem 'rubycas-client'
 gem 'devise'
-gem 'devise_cas_authenticatable'
-
+# gem 'devise_cas_authenticatable'
+gem 'omniauth-oktaoauth'
 
 # LDAP lookups
 gem 'net-ldap'
