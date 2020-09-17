@@ -28,13 +28,19 @@ set -e
 # cd "$SUMA_APP_DIR/import"
 # sed -i 's@$sumaserver_url =.*@$sumaserver_url = \"'"$SUMA_HOST_URL"'\/sumaserver\";@' config.php
 
-echo "Modify database file"
 cd "$APP_DIR/config"
-cp database.yml.example database.yml
-
+echo "Modify database file"
 sed -i 's/{{ database_host }}/'"$DB_HOST"'/g' database.yml
 sed -i 's/{{ database_username }}/'"$DB_NAME"'/g' database.yml
 sed -i 's/{{ database_password }}/'"$DB_PASSWORD"'/g' database.yml
+
+echo "Modify secrets file"
+sed -i 's/{{ auth_server_id }}/'"$AUTH_SERVER_ID"'/g' secrets.yml
+sed -i 's/{{ base_auth_url }}/'"$BASE_AUTH_URL"'/g' secrets.yml
+sed -i 's/{{ client_id }}/'"$CLIENT_ID"'/g' secrets.yml
+sed -i 's/{{ client_secret }}/'"$CLIENT_SECRET"'/g' secrets.yml
+sed -i 's/{{ redirect_url }}/'"$REDIRECT_URL"'/g' secrets.yml
+sed -i 's/{{ secret_key_base }}/'"$SECRET_KEY_BASE"'/g' secrets.yml
 
 echo "Start server"
 exec nginx
