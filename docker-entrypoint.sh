@@ -31,6 +31,7 @@ set -e
 cd "$APP_DIR/config"
 
 echo "Modify database file"
+
 sed -i 's/{{ database_host }}/'"$DB_HOST"'/g' database.yml
 sed -i 's/{{ database_username }}/'"$DB_NAME"'/g' database.yml
 sed -i 's/{{ database_password }}/'"$DB_PASSWORD"'/g' database.yml
