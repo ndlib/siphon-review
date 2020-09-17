@@ -29,6 +29,7 @@ set -e
 # sed -i 's@$sumaserver_url =.*@$sumaserver_url = \"'"$SUMA_HOST_URL"'\/sumaserver\";@' config.php
 
 cd "$APP_DIR/config"
+
 echo "Modify database file"
 sed -i 's/{{ database_host }}/'"$DB_HOST"'/g' database.yml
 sed -i 's/{{ database_username }}/'"$DB_NAME"'/g' database.yml
