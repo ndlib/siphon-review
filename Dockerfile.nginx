@@ -1,0 +1,51 @@
+FROM phusion/passenger-ruby24:latest
+
+RUN apt-get update && \
+    apt-get install -y libpq-dev --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+# Set correct environment variables.
+ENV HOME /root
+
+# Configuration
+ENV APP_DIR /home/ec2-user/siphon
+ENV TZ America/Indiana/Indianapolis
+ENV DB_HOST siphon_mysql_1
+ENV DB_NAME siphon_prod
+ENV DB_USER siphon_prod_dba
+
+# set timezone
+RUN ln -s /usr/share/zoneinfo/$TZ localtime
+
+RUN useradd -m -d /home/ec2-user ec2-user
+RUN usermod -aG sudo ec2-user
+RUN usermod -aG www-data ec2-user
+RUN mkdir $APP_DIR
+
+# Install RVM
+RUN \curl -sSL https://get.rvm.io | bash -s stable
+RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
+
+
+# Conf Nginx / Passenger
+RUN rm -f /etc/service/nginx/down
+RUN rm /etc/nginx/sites-enabled/default
+ADD ./nginx.conf /etc/nginx/sites-enabled/webapp.conf
+
+# Prepare folders
+COPY . $APP_DIR
+
+WORKDIR $APP_DIR
+RUN bundle update
+RUN bundle install
+
+# Run the app
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+
+RUN chown -R ec2-user:ec2-user $APP_DIR
+
+# Uncomment the following 2 lines if running locally
+# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+# CMD ["nginx"]

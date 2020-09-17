@@ -1,0 +1,7 @@
+FROM mysql:5.7
+
+RUN apt-get update
+
+COPY schema_w_sample.sql /docker-entrypoint-initdb.d
+COPY mysql-healthcheck.sh /usr/local/bin/
+
