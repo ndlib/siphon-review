@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "c75a59aa-2da8-47e7-b68c-522182fd9dab",
+		"name": "Siphon",
+		"description": "# Siphon (Book Reformatting DB)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Smoke",
+			"item": [
+				{
+					"name": "Get Root",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "## Smoke tests for Siphon",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "58a78728-892a-4377-9305-feff745ae568",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0ceb61b-9235-49fe-aa36-4876af839472",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
