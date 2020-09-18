@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 gem 'bigdecimal'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "~> 4.2.0"
-gem 'tzinfo-data'
+gem "puma"
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
 
-gem "therubyracer"
+# gem "therubyracer"
 
-
+gem 'tzinfo-data'
 gem 'american_date'
 
 # db backends
@@ -99,7 +99,7 @@ group :test do
   gem 'growl'
   gem 'growl-rspec'
   gem 'rb-fsevent'
-    gem 'database_cleaner'
+  gem 'database_cleaner'
   gem 'factory_girl', "~> 2.6.0"
   gem 'factory_girl_rails', "~> 1.7.0"
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
