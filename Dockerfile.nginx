@@ -40,14 +40,13 @@ RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 
 WORKDIR $APP_DIR
 
-# RUN bundle update
+RUN chown -R app:app $APP_DIR
 
+USER app
 RUN bundle install
 
 # Aleph cronjob
 RUN crontab /siphon/import_aleph_crontab.txt
-
-RUN chown -R app:app $APP_DIR
 
 # Uncomment the following 2 lines if running locally
 # ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
