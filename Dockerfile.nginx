@@ -5,6 +5,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
+# Install RVM
+RUN \curl -sSL https://get.rvm.io | bash -s stable
+RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
+
 COPY Gemfile ./Gemfile
 RUN bundle update
 
@@ -28,10 +32,6 @@ WORKDIR $APP_DIR
 
 # set timezone
 # RUN ln -s /usr/share/zoneinfo/$TZ localtime
-
-# Install RVM
-# RUN \curl -sSL https://get.rvm.io | bash -s stable
-# RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
 
 # Conf Nginx / Passenger
 RUN rm -f /etc/service/nginx/down
