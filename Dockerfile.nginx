@@ -5,15 +5,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-# Install RVM
-RUN \curl -sSL https://get.rvm.io | bash -s stable
-RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
-
-COPY Gemfile ./Gemfile
-RUN bundle install
-# RUN bundle update
-
-# ENV Configurations
+# Configuration
 ENV APP_DIR /siphon
 ENV TZ America/Indiana/Indianapolis
 ENV DB_HOST siphon_mysql_1
@@ -26,25 +18,33 @@ ENV CLIENT_SECRET client_secret
 ENV REDIRECT_URL redirect_url
 ENV SECRET_KEY_BASE secret_key_base
 
-# Prepare folders
-RUN mkdir $APP_DIR
-COPY . $APP_DIR
-WORKDIR $APP_DIR
-
 # set timezone
-# RUN ln -s /usr/share/zoneinfo/$TZ localtime
+RUN ln -s /usr/share/zoneinfo/$TZ localtime
+
+RUN mkdir $APP_DIR
+
+# Install RVM
+RUN \curl -sSL https://get.rvm.io | bash -s stable
+RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
 
 # Conf Nginx / Passenger
 RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
 ADD ./nginx.conf /etc/nginx/sites-enabled/webapp.conf
 
-# Aleph cronjob
-RUN crontab /siphon/import_aleph_crontab.txt
+# Prepare folders
+COPY . $APP_DIR
+
+WORKDIR $APP_DIR
+USER app
+# RUN bundle update
+RUN bundle install
+USER root
 
 # Run the app
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+
 # Uncomment the following 2 lines if running locally
 # ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # CMD ["nginx"]
