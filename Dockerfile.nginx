@@ -30,9 +30,11 @@ RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
 ADD ./nginx.conf /etc/nginx/sites-enabled/webapp.conf
 
+
 # Prepare folders
-USER app
 RUN mkdir $APP_DIR
+RUN chown app:app $APP_DIR
+USER app
 COPY . $APP_DIR
 WORKDIR $APP_DIR
 RUN bundle install
