@@ -10,7 +10,8 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
 
 COPY Gemfile ./Gemfile
-RUN bundle update
+RUN bundle install
+# RUN bundle update
 
 # ENV Configurations
 ENV APP_DIR /siphon
