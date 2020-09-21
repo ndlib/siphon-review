@@ -43,10 +43,11 @@ WORKDIR $APP_DIR
 RUN chown -R app:app $APP_DIR
 
 USER app
-RUN bundle install
-
 # Aleph cronjob
 RUN crontab /siphon/import_aleph_crontab.txt
+RUN bundle install
+USER root
+
 
 # Uncomment the following 2 lines if running locally
 # ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
