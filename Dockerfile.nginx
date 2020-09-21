@@ -33,16 +33,30 @@ RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
 ADD ./nginx.conf /etc/nginx/sites-enabled/webapp.conf
 
+
 # Prepare folders
 COPY . $APP_DIR
 
-WORKDIR $APP_DIR
-# RUN bundle update
-RUN bundle install
+RUN chown -R app:app $APP_DIR
 
 # Run the app
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+
+# RUN chown -R app:app /var/log/nginx;
+# RUN chown -R app:app /var/lib/nginx;
+# RUN chmod -R 755 /var/log/nginx;
+
+WORKDIR $APP_DIR
+USER app
+
+# RUN bundle update
+RUN bundle install
+
+USER root
+
+# Aleph cronjob
+RUN crontab /siphon/import_aleph_crontab.txt
 
 # Uncomment the following 2 lines if running locally
 # ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
