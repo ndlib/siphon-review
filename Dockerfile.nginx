@@ -1,7 +1,7 @@
 FROM phusion/passenger-ruby24:latest
 
 RUN apt-get update && \
-    apt-get install -y libpq-dev --no-install-recommends && \
+    apt-get install -y nano libpq-dev --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
@@ -23,11 +23,6 @@ ENV SECRET_KEY_BASE secret_key_base
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
 RUN mkdir $APP_DIR
-
-# Install RVM
-RUN \curl -sSL https://get.rvm.io | bash -s stable
-RUN ./usr/local/rvm/bin/rvm install "ruby-2.4.1"
-
 
 # Conf Nginx / Passenger
 RUN rm -f /etc/service/nginx/down
