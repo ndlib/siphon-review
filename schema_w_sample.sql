@@ -14,6 +14,10 @@ MySQL - 5.7.12 : Database - siphon_prod
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`siphon_prod` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
 
+CREATE USER 'siphon_prod_dba'@'%' IDENTIFIED BY 'db_password';
+GRANT ALL PRIVILEGES ON siphon_prod.* TO 'siphon_prod_dba'@'%';
+FLUSH PRIVILEGES;
+
 USE `siphon_prod`;
 
 /*Table structure for table `microfilm_reels` */

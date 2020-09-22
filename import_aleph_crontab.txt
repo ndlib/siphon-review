@@ -1,1 +1,1 @@
-0,10,20,30,40,50 7,8,9,10,11,12,13,14,15,16,17,18 * * * /bin/bash -c 'cd /siphon; RAILS_ENV=production /usr/bin/bundle exec > /usr/local/rvm/gems/ruby-2.4.10/bin/rails runner "AlephReformattingImporter.new.import!"' > /siphon/log/cron_out.log 2>&1
+0,10,20,30,40,50 7,8,9,10,11,12,13,14,15,16,17,18 * * * /bin/bash -c 'cd /siphon; RAILS_ENV=production PATH=/bin:/usr/bin bundle exec > rails runner "AlephReformattingImporter.new.import!"' > /siphon/log/cron_out.log 2>&1
