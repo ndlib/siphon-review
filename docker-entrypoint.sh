@@ -17,5 +17,5 @@ sed -i 's/{{ secret_key_base }}/'"$SECRET_KEY_BASE"'/g' "$APP_DIR/config/secrets
 # sed -i 's/{{ redirect_url }}/'"$REDIRECT_URL"'/g' "$APP_DIR/config/secrets.yml"
 
 echo "Start Service"
-# exec nginx
-exec bundle exec passenger start
+exec nginx
+# exec bundle exec passenger start
