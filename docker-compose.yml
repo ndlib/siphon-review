@@ -1,18 +1,17 @@
 version: '3.4'
 
 services:
-  web:
+  passenger:
     build:
       context: .
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile.passenger
     ports:
-      - "80:80"
-      - "8080:8080"      
+      - "3000:3000"    
     depends_on: 
       - mysql
     environment:
       DB_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}    
   mysql:
     build:
       context: .

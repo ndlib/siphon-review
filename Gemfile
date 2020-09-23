@@ -6,7 +6,7 @@ gem 'rails', "~> 4.2.0"
 
 gem 'rake', "~> 12.3.2"
 
-# gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
+gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"

@@ -50,3 +50,4 @@ USER root
 # Uncomment the following 2 lines if running locally
 # ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # CMD ["nginx"]
+# CMD exec bundle exec passenger start
