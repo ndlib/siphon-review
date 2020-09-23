@@ -18,7 +18,6 @@ ENV CLIENT_SECRET client_secret
 ENV REDIRECT_URL redirect_url
 ENV SECRET_KEY_BASE secret_key_base
 
-
 # set timezone
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
@@ -44,7 +43,7 @@ RUN crontab /siphon/import_aleph_crontab.txt
 RUN bundle install
 USER root
 
-
+CMD bundle exec passenger start
 # Uncomment the following 2 lines if running locally
 # ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # CMD ["nginx"]
