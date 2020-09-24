@@ -12,10 +12,10 @@ ENV DB_HOST siphon_mysql_1
 ENV DB_NAME siphon_prod
 ENV DB_USER siphon_prod_dba
 ENV AUTH_SERVER_ID auth_server_id
-ENV BASE_AUTH_URL base_auth_url
+ENV BASE_AUTH base_auth_url
 ENV CLIENT_ID client_id
 ENV CLIENT_SECRET client_secret
-ENV REDIRECT_URL redirect_url
+ENV HOST_NAME localhost
 ENV SECRET_KEY_BASE secret_key_base
 
 # set timezone
@@ -47,5 +47,6 @@ RUN bundle install
 USER root
 
 # Uncomment the following 2 lines if running locally
-# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # CMD ["nginx"]
+CMD ["/usr/local/bin/docker-entrypoint.sh"]

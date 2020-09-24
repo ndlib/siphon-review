@@ -12,9 +12,9 @@ sed -i 's/{{ client_id }}/'"$CLIENT_ID"'/g' "$APP_DIR/config/secrets.yml"
 sed -i 's/{{ client_secret }}/'"$CLIENT_SECRET"'/g' "$APP_DIR/config/secrets.yml"
 sed -i 's/{{ secret_key_base }}/'"$SECRET_KEY_BASE"'/g' "$APP_DIR/config/secrets.yml"
 
-# echo "Modify config file for URL secrets"
-# sed -i 's/{{ base_auth_url }}/'"$BASE_AUTH_URL"'/g' "$APP_DIR/config/secrets.yml"
-# sed -i 's/{{ redirect_url }}/'"$REDIRECT_URL"'/g' "$APP_DIR/config/secrets.yml"
+echo "Modify config file for URL secrets"
+sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
+sed -i 's/{{ base_auth }}/'"$BASE_AUTH"'/g' "$APP_DIR/config/secrets.yml"
 
 echo "Start Service"
 exec nginx
