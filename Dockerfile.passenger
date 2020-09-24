@@ -47,5 +47,5 @@ RUN bundle install
 USER root
 
 # Uncomment the following 2 lines if running locally
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["nginx"]
+# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+# CMD ["nginx"]
