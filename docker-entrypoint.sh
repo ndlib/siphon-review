@@ -18,6 +18,6 @@ echo "Modify config file for HOST secrets"
 sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
 
 echo "Start Service"
-# exec nginx
-exec bundle exec passenger start
+exec nginx
+# exec bundle exec passenger start
 # exec bundle exec rails server
