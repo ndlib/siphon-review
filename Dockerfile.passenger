@@ -11,6 +11,7 @@ ENV TZ America/Indiana/Indianapolis
 ENV DB_HOST siphon_mysql_1
 ENV DB_NAME siphon_prod
 ENV DB_USER siphon_prod_dba
+ENV DB_PASSWORD db_password
 ENV AUTH_SERVER_ID auth_server_id
 ENV BASE_AUTH base_auth_url
 ENV CLIENT_ID client_id

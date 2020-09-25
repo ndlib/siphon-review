@@ -13,7 +13,7 @@ mysql_settings: &mysql_settings
 ##########################################
 development:
   <<: *mysql_settings
-  database: siphon_prod
+  database: {{ database_name }}
   host:     {{ database_host }}
   username: {{ database_username }}
   password: {{ database_password }}
@@ -28,14 +28,14 @@ test: &test
 
 pre_production:
   <<: *mysql_settings
-  database: siphon_prod
+  database: {{ database_name }}
   host:     {{ database_host }}
   username: {{ database_username }}
   password: {{ database_password }}
 
 production:
   <<: *mysql_settings
-  database: siphon_prod
+  database: {{ database_name }}
   host:     {{ database_host }}
   username: {{ database_username }}
   password: {{ database_password }}
