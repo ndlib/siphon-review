@@ -1,14 +1,27 @@
 version: '3.4'
 
 services:
-  passenger:
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.nginx
+  #   ports:
+  #     - "80:80"   
+  #   depends_on: 
+  #     - mysql
+  #     - ruby
+  #   environment:
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}    
+  ruby:
     build:
       context: .
       dockerfile: Dockerfile.passenger
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - .:/siphon
     ports:
       - "3000:3000"   
-    depends_on: 
-      - mysql
     environment:
       DB_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}    
