@@ -3,10 +3,10 @@
 # Docker Instructions
 
 ## When running docker locally
-Uncomment the following last 2 lines of code in the Dockerfile.apachePHP file so that Nginx will start.  Local builds will use mysql image whereas AWS uses RDS and variable values come from parameter store.
+Uncomment the following last 2 lines of code in the Dockerfile.passenger file so that Passenger will start.  Local builds will use mysql image whereas AWS uses RDS and variable values come from parameter store.
 ```
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["nginx"]
+ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
+CMD passenger start -e production
 
 You can also change the ENV variables values for the docker mysql image. Modify the .env file and populate it with passwords needed to create the MySQL database, access the database. The file should look something like the following:
 
@@ -17,8 +17,8 @@ MYSQL_ROOT_PASSWORD=mysql_root_password
 ## When running out of AWS
 Please see cdk-siphon repository (https://github.com/ndlib/cdk-siphon) for AWS infrastructure code which uses this repo to build container images. Comment out the following last 2 lines of code in the Dockerfile.passenger file.
 ```
-# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-# CMD ["nginx"]
+# ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
+# CMD passenger start -e production
 ```
 
 ## Running

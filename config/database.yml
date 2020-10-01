@@ -13,10 +13,10 @@ mysql_settings: &mysql_settings
 ##########################################
 development:
   <<: *mysql_settings
-  database: {{ database_name }}
-  host:     {{ database_host }}
-  username: {{ database_username }}
-  password: {{ database_password }}
+  database: siphon_prod
+  host:     siphon_mysql_1
+  username: siphon_prod_dba
+  password: db_password
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,14 +28,14 @@ test: &test
 
 pre_production:
   <<: *mysql_settings
-  database: {{ database_name }}
-  host:     {{ database_host }}
-  username: {{ database_username }}
-  password: {{ database_password }}
+  database: siphon_prod
+  host:     siphon_mysql_1
+  username: siphon_prod_dba
+  password: db_password
 
 production:
   <<: *mysql_settings
-  database: {{ database_name }}
-  host:     {{ database_host }}
-  username: {{ database_username }}
-  password: {{ database_password }}
+  database: siphon_prod
+  host:     siphon_mysql_1
+  username: siphon_prod_dba
+  password: db_password
