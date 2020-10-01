@@ -17,5 +17,8 @@ sed -i 's/{{ secret_key_base }}/'"$SECRET_KEY_BASE"'/g' "$APP_DIR/config/secrets
 echo "Modify config file for HOST secrets"
 sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
 
+echo "Show Secrets"
+cat "$APP_DIR/config/secrets.yml"
+
 echo "Start Service"
 exec passenger start
