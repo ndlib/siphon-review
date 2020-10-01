@@ -22,7 +22,8 @@ RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
 RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile $APP_DIR
+COPY Gemfile.lock $APP_DIR
 RUN bundle install
 COPY . $APP_DIR
 
