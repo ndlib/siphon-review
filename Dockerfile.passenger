@@ -2,19 +2,18 @@ FROM ruby:2.4
 
 RUN apt-get update && apt-get install -y nano nodejs cron && rm -rf /var/lib/apt/lists/*
 
-
 ENV APP_DIR /siphon
 ENV TZ America/Indiana/Indianapolis
-ENV DB_HOST siphon_mysql_1
-ENV DB_NAME siphon_prod
-ENV DB_USER siphon_prod_dba
-ENV DB_PASSWORD db_password
-ENV AUTH_SERVER_ID auth_server_id
-ENV BASE_AUTH base_auth_url
-ENV CLIENT_ID client_id
-ENV CLIENT_SECRET client_secret
-ENV HOST_NAME localhost
-ENV SECRET_KEY_BASE secret_key_base
+ENV DB_HOST <%= ENV['DB_HOST'] %>
+ENV DB_NAME <%= ENV['DB_NAME'] %>
+ENV DB_USER <%= ENV['DB_USER'] %>
+ENV DB_PASSWORD <%= ENV['DB_PASSWORD'] %>
+ENV AUTH_SERVER_ID <%= ENV['AUTH_SERVER_ID'] %>
+ENV BASE_AUTH <%= ENV['BASE_AUTH'] %>
+ENV CLIENT_ID <%= ENV['CLIENT_ID'] %>
+ENV CLIENT_SECRET <%= ENV['CLIENT_SECRET'] %>
+ENV HOST_NAME <%= ENV['HOST_NAME'] %>
+ENV SECRET_KEY_BASE <%= ENV['SECRET_KEY_BASE'] %>
 
 # set timezone
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
