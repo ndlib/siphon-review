@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bigdecimal'
+gem 'bigdecimal', "~> 1.4.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "~> 4.2.0"
 gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
