@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+echo "Create template files"
+mv "$APP_DIR/config/secrets.yml.template" "$APP_DIR/config/secrets.yml"
+mv "$APP_DIR/config/database.yml.template" "$APP_DIR/config/database.yml"
+
 echo "Modify config file for database"
 sed -i 's/{{ database_host }}/'"$DB_HOST"'/g' "$APP_DIR/config/database.yml"
 sed -i 's/{{ database_username }}/'"$DB_USER"'/g' "$APP_DIR/config/database.yml"

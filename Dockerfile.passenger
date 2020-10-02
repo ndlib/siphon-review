@@ -1,6 +1,6 @@
 FROM ruby:2.4
 
-RUN apt-get update && apt-get install -y nano nodejs cron && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nodejs cron && rm -rf /var/lib/apt/lists/*
 
 ENV APP_DIR /siphon
 ENV TZ America/Indiana/Indianapolis
@@ -15,9 +15,10 @@ ENV CLIENT_SECRET <%= ENV['CLIENT_SECRET'] %>
 ENV HOST_NAME <%= ENV['HOST_NAME'] %>
 ENV SECRET_KEY_BASE <%= ENV['SECRET_KEY_BASE'] %>
 
-# set timezone
+# Set timezone
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
+# Set up folder, files and needed bundle gem objects
 RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 COPY Gemfile $APP_DIR
@@ -25,12 +26,12 @@ COPY Gemfile.lock $APP_DIR
 RUN bundle install
 COPY . $APP_DIR
 
+# Setup crontab for Aleph importing
 RUN crontab /siphon/import_aleph_crontab.txt
 
+# Set up application to run
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 RUN chmod +x /usr/bin/docker-entrypoint.sh
-
-# Uncomment the following 2 lines if running locally
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 CMD ["passenger", "start"]
 
