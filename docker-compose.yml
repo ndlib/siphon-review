@@ -18,7 +18,7 @@ services:
       CLIENT_ID: ${CLIENT_ID}
       CLIENT_SECRET: ${CLIENT_SECRET}
       HOST_NAME: ${HOST_NAME}
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}      
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
   mysql:
     build:
       context: .

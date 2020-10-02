@@ -2,6 +2,8 @@ FROM ruby:2.4
 
 RUN apt-get update && apt-get install -y nodejs cron && rm -rf /var/lib/apt/lists/*
 
+ENV PASSENGER_RUN_ENV production
+
 ENV APP_DIR /siphon
 ENV TZ America/Indiana/Indianapolis
 ENV DB_HOST <%= ENV['DB_HOST'] %>
@@ -33,5 +35,5 @@ RUN crontab /siphon/import_aleph_crontab.txt
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
-CMD ["passenger", "start"]
+CMD ["passenger", "start", "-e", "$PASSENGER_RUN_ENV"]
 

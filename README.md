@@ -6,10 +6,19 @@
 Local builds will use mysql image whereas AWS uses RDS and variable values come from parameter store.
 ```
 
-You can also change the ENV variables values for the docker mysql image. Modify the .env file and populate it with passwords needed to create the MySQL database, access the database. The file should look something like the following:
+You can also change the ENV variables values for the docker images. Modify the .env file and populate it with passwords needed to create the MySQL database, access the database, etc. The file should look something like the following:
 
 DB_PASSWORD=db_password
 MYSQL_ROOT_PASSWORD=mysql_root_password
+DB_HOST=db_host
+DB_NAME=siphon_prod
+DB_USER=siphon_prod_dba
+AUTH_SERVER_ID=auth_server_id
+BASE_AUTH=base_auth_url
+CLIENT_ID=client_id
+CLIENT_SECRET=client_secret
+HOST_NAME=localhost
+SECRET_KEY_BASE=secret_key_base
 ```
 
 ## When running out of AWS
