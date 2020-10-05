@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  ruby:
+    build:
+      context: .
+      dockerfile: Dockerfile.passenger
+    ports:
+      - "3000:3000"   
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      AUTH_SERVER_ID: ${AUTH_SERVER_ID}
+      BASE_AUTH: ${BASE_AUTH}
+      CLIENT_ID: ${CLIENT_ID}
+      CLIENT_SECRET: ${CLIENT_SECRET}
+      HOST_NAME: ${HOST_NAME}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    ports:
+      - "3306:3306"      
+    healthcheck:
+      interval: 30s
+      timeout: 10s
+      retries: 5 
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}     
+      MYSQL_PASSWORD:  ${DB_PASSWORD}
+      MYSQL_DATABASE: siphon_prod 
