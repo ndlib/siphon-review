@@ -25,6 +25,8 @@ test: &test
   <<: *mysql_settings
   database: siphon_test
   username: root
+  host: localhost
+  password: <%= ENV["MYSQL_PASSWORD"] %>
 
 pre_production:
   <<: *mysql_settings
