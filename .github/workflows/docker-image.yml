@@ -1,0 +1,16 @@
+name: Docker Image CI
+
+on: pull_request
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Siphon image
+      run:  docker build . --file Dockerfile.passenger --tag siphon-ruby:$(date +%s)
+    - name: Build the Siphon Database Docker image
+      run:  docker build . --file Dockerfile.mysql --tag siphon-db:$(date +%s)
