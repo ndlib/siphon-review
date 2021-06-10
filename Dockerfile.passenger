@@ -25,6 +25,7 @@ RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 COPY Gemfile $APP_DIR
 COPY Gemfile.lock $APP_DIR
+RUN bundle update
 RUN bundle install
 COPY . $APP_DIR
 
