@@ -25,6 +25,7 @@ RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 COPY Gemfile $APP_DIR
 COPY Gemfile.lock $APP_DIR
+RUN bundle update
 RUN bundle install
 COPY . $APP_DIR
 
@@ -37,3 +38,4 @@ RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 CMD ["passenger", "start", "-e", "$PASSENGER_RUN_ENV"]
 
+RUN rails bundle exec > runner "AlephReformattingImporter.new.import!" > /siphon/log/cron_out.log 2>&1
