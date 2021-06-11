@@ -23,5 +23,8 @@ sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
 echo "Cron in background"
 cron
 
+echo "Cron in background"
+crontab -l
+
 echo "Start Passenger Service as $PASSENGER_RUN_ENV"
 exec passenger start -e $PASSENGER_RUN_ENV
