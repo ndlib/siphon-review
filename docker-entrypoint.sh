@@ -20,11 +20,14 @@ sed -i 's/{{ secret_key_base }}/'"$SECRET_KEY_BASE"'/g' "$APP_DIR/config/secrets
 echo "Modify config file for HOST secrets"
 sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
 
-echo "Cron in background"
+echo "Start cron"
 cron
 
-echo "Cron in background"
+echo "View crontab entry"
 crontab -l
+
+echo "Show process running"
+ps -aux
 
 echo "Start Passenger Service as $PASSENGER_RUN_ENV"
 exec passenger start -e $PASSENGER_RUN_ENV
