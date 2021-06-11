@@ -29,8 +29,17 @@ COPY Gemfile $APP_DIR
 RUN bundle install
 COPY . $APP_DIR
 
-# Setup crontab for Aleph importing
-RUN crontab /siphon/import_aleph_crontab.txt
+# Copy Aleph cron file to the cron.d directory
+COPY import_aleph_crontab.txt /etc/cron.d/import_aleph_crontab.txt
+ 
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/import_aleph_crontab.txt
+
+# Apply cron job
+RUN crontab /etc/cron.d/import_aleph_crontab.txt
+ 
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
 
 # Set up application to run
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
