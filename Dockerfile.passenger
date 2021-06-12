@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.6
 
 RUN apt-get update && apt-get install -y nodejs cron && rm -rf /var/lib/apt/lists/*
 
@@ -37,13 +37,8 @@ RUN chmod 0644 /etc/cron.d/import_aleph_crontab.txt
 # Apply cron job
 RUN crontab /etc/cron.d/import_aleph_crontab.txt
  
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
-
 # Set up application to run
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 CMD ["passenger", "start", "-e", "$PASSENGER_RUN_ENV"]
-
-# RUN rails bundle exec > runner "AlephReformattingImporter.new.import!"

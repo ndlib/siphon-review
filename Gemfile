@@ -8,8 +8,8 @@ gem 'rake', "~> 12.3.2"
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
-
-# gem "therubyracer"
+gem 'execjs'
+gem "therubyracer"
 
 gem 'tzinfo-data'
 gem 'american_date'
