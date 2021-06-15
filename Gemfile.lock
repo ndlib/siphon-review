@@ -408,6 +408,7 @@ DEPENDENCIES
   database_cleaner
   devise
   exception_notification (~> 4.0.0)
+  execjs
   factory_girl (~> 2.6.0)
   factory_girl_rails (~> 1.7.0)
   faker

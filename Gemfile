@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 gem 'bigdecimal', "~> 1.4.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "~> 4.2.0"
-gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
+#gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
 gem 'rake', "~> 12.3.2"
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
-gem 'execjs'
+#gem 'execjs'
 #gem "therubyracer"
 
 gem 'tzinfo-data'

@@ -1,6 +1,6 @@
-FROM ruby:2.6
+FROM phusion/passenger-ruby26
 
-RUN apt-get update && apt-get install -y nodejs cron && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nodejs shared-mime-info && rm -rf /var/lib/apt/lists/*
 
 ENV PASSENGER_RUN_ENV production
 
@@ -25,8 +25,21 @@ RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 COPY Gemfile $APP_DIR
 COPY Gemfile.lock $APP_DIR
+
+USER app
 RUN bundle install
+# RUN sudo -u app RAILS_ENV=production rake assets:precompile
+USER root
+
 COPY . $APP_DIR
+RUN chown -R app:app $APP_DIR
+
+# Enable nginx and passenger
+RUN rm -f /etc/service/nginx/down
+
+RUN rm /etc/nginx/sites-enabled/default
+
+ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
 
 # Copy Aleph cron file to the cron.d directory
 COPY import_aleph_crontab.txt /etc/cron.d/import_aleph_crontab.txt
@@ -41,4 +54,6 @@ RUN crontab /etc/cron.d/import_aleph_crontab.txt
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
-CMD ["passenger", "start", "-e", "$PASSENGER_RUN_ENV"]
+
+#CMD ["passenger", "start", "-e", "$PASSENGER_RUN_ENV"]
+CMD ["/sbin/my_init"]
