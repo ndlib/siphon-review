@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bigdecimal', "~> 1.4.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', "~> 4.2.0"
+gem 'rails'
 #gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
 gem 'rake', "~> 12.3.2"
 
@@ -13,12 +13,13 @@ gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
 
 gem 'tzinfo-data'
 gem 'american_date'
+#gem 'ruby'
 
 # db backends
 gem 'mysql2'
 
 # authentication
-gem 'rubycas-client'
+# gem 'rubycas-client'
 gem 'devise'
 # gem 'devise_cas_authenticatable'
 gem 'omniauth-oktaoauth'
