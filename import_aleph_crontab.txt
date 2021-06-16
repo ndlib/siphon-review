@@ -1,1 +1,1 @@
-* 8,9,10,11,12,13,14,15,16,17 * * * app cd /siphon && /usr/local/rvm/gems/default/bin/rails runner AlephReformattingImporter.new.import! >log/cron_out.log 2>&1
+* 8,9,10,11,12,13,14,15,16,17 * * * app cd /home/app/siphon && /usr/local/rvm/gems/ruby-2.6.7/bin/rails runner AlephReformattingImporter.new.import! >log/cron_out.log 2>&1
