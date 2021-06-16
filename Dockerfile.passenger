@@ -6,7 +6,7 @@ ENV HOME /home/app/siphon
 # RUN apt-get update && apt-get install -y shared-mime-info postfix
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get install -y shared-mime-info postfix sudo
 
-ENV PASSENGER_RUN_ENV production
+ENV PASSENGER_RUN_ENV development
 
 ENV APP_DIR /home/app/siphon
 ENV TZ America/Indiana/Indianapolis
@@ -32,14 +32,16 @@ COPY Gemfile $APP_DIR
 COPY Gemfile.lock $APP_DIR
 RUN chown -R app:app $APP_DIR
 
-RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby
+# Without this, I get an error when trying to run rails but with it the website won't run
+# RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 USER app
 # RUN sudo -u app bundle install
-RUN gem install bundler:1.17.3
+# RUN gem install bundler:1.17.3
 RUN bundle install
 USER root
+
 # Fix Postfix MTA
 RUN mkfifo /var/spool/postfix/public/pickup
 
