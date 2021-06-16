@@ -21,6 +21,5 @@ echo "Modify config file for HOST secrets"
 sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
 
 echo "Start Passenger Service as $PASSENGER_RUN_ENV"
-#exec passenger start -e $PASSENGER_RUN_ENV
 exec /sbin/my_init
 
