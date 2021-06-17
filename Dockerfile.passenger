@@ -34,7 +34,7 @@ RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
 # Set up folder, files and needed bundle gem objects
 RUN mkdir $APP_DIR
-ADD . $APP_DIR
+COPY . $APP_DIR
 WORKDIR $APP_DIR
 COPY Gemfile $APP_DIR
 COPY Gemfile.lock $APP_DIR
