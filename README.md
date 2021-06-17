@@ -13,7 +13,7 @@ You can also change the ENV variables values for the docker images. Modify the .
 ```console
 DB_PASSWORD=db_password
 MYSQL_ROOT_PASSWORD=mysql_root_password
-DB_HOST=db_host
+DB_HOST=mysql
 DB_NAME=siphon_prod
 DB_USER=siphon_prod_dba
 AUTH_SERVER_ID=auth_server_id
