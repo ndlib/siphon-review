@@ -8,11 +8,8 @@ RUN apt-get update && apt-get install -y sudo shared-mime-info postfix
 # Set correct environment variables.
 ENV HOME /home/app/siphon
 
-# Use baseimage-docker's init process.
-CMD ["/sbin/my_init"]
-
 # RUN bash -lc 'rvm install ruby-2.6.7'
-RUN bash -lc 'rvm --default use ruby-2.6.7'
+RUN bash -lc 'rvm --default use ruby-2.7.3'
 
 ENV PASSENGER_RUN_ENV development
 
@@ -39,10 +36,6 @@ WORKDIR $APP_DIR
 COPY Gemfile $APP_DIR
 COPY Gemfile.lock $APP_DIR
 RUN chown -R app:app $APP_DIR
-
-# Without this, I get an error when trying to run rails but with it the website won't run
-# RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-# RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 # USER app
 RUN gem install bundler:1.17.3
@@ -75,3 +68,6 @@ ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Use baseimage-docker's init process.
+CMD ["/sbin/my_init"]
