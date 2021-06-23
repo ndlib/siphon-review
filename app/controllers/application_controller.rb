@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Okta
   def login_user!
     if !session[:netid]
-     redirect_to user_oktaoauth_omniauth_authorize_path
+    #  redirect_to user_oktaoauth_omniauth_authorize_path
     end
   end
 
