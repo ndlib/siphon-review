@@ -7,6 +7,15 @@ RUN apt-get update && apt-get install -y sudo shared-mime-info postfix
 
 # Set correct environment variables.
 ENV HOME /home
+
+# Use baseimage-docker's init process.
+CMD ["/sbin/my_init"]
+
+# RUN bash -lc 'rvm install ruby-2.6.7'
+RUN bash -lc 'rvm --default use ruby-2.6.7'
+
+ENV PASSENGER_RUN_ENV development
+
 ENV APP_DIR /home/app/siphon
 ENV TZ America/Indiana/Indianapolis
 ENV DB_HOST <%= ENV['DB_HOST'] %>
@@ -20,41 +29,28 @@ ENV CLIENT_SECRET <%= ENV['CLIENT_SECRET'] %>
 ENV HOST_NAME <%= ENV['HOST_NAME'] %>
 ENV SECRET_KEY_BASE <%= ENV['SECRET_KEY_BASE'] %>
 
-# 2.7.3 is configured as the default.
-RUN bash -lc 'rvm --default use ruby-2.6.7'
-
-# Use baseimage-docker's init process.
-CMD ["/sbin/my_init"]
-
 # Set timezone
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
 # Set up folder, files and needed bundle gem objects
+
 WORKDIR /tmp
 ADD Gemfile /tmp/
-# ADD Gemfile.lock /tmp/
+ADD Gemfile.lock /tmp/
 
-RUN bash -lc 'gem install bundler:1.17.3'
-# RUN gem install bundler:1.17.3
-# RUN gem install mimemagic:0.3.10
-RUN bash -lc 'bundle install'
-# RUN sudo -u app bundle install
-
-# RUN gem install bundler:1.17.3
-# RUN sudo -u app bundle install
-# RUN bundle install
-
+# Without this, I get an error when trying to run rails but with it the website won't run
+# RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 # USER app
-# RUN rvm-exec 2.7.3 gem install bundler:1.17.3
+RUN gem install bundler:1.17.3
 # RUN gem install mimemagic:0.3.10
-# RUN rvm-exec 2.7.3 sudo -u app bundle install
+RUN sudo -u app bundle install
 # RUN bundle install
 # USER root
 
 ADD . $APP_DIR
 RUN chown -R app:app $APP_DIR
-
 WORKDIR $APP_DIR
 
 # Fix Postfix MTA
@@ -81,4 +77,3 @@ ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
