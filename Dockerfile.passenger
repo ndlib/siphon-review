@@ -6,13 +6,7 @@ RUN apt-get update && apt-get install -y sudo shared-mime-info postfix
 # RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get install -y shared-mime-info postfix sudo
 
 # Set correct environment variables.
-ENV HOME /home/app/siphon
-
-# RUN bash -lc 'rvm install ruby-2.6.7'
-RUN bash -lc 'rvm --default use ruby-2.7.3'
-
-ENV PASSENGER_RUN_ENV development
-
+ENV HOME /home
 ENV APP_DIR /home/app/siphon
 ENV TZ America/Indiana/Indianapolis
 ENV DB_HOST <%= ENV['DB_HOST'] %>
@@ -26,23 +20,35 @@ ENV CLIENT_SECRET <%= ENV['CLIENT_SECRET'] %>
 ENV HOST_NAME <%= ENV['HOST_NAME'] %>
 ENV SECRET_KEY_BASE <%= ENV['SECRET_KEY_BASE'] %>
 
+# 2.7.3 is configured as the default.
+RUN bash -lc 'rvm --default use ruby-2.6.7'
+
+# Use baseimage-docker's init process.
+CMD ["/sbin/my_init"]
+
 # Set timezone
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
 # Set up folder, files and needed bundle gem objects
-RUN mkdir $APP_DIR
-COPY . $APP_DIR
-WORKDIR $APP_DIR
-COPY Gemfile $APP_DIR
-COPY Gemfile.lock $APP_DIR
-RUN chown -R app:app $APP_DIR
+WORKDIR /tmp
+ADD Gemfile /tmp/
+ADD Gemfile.lock /tmp/
+# RUN gem install bundler:1.17.3
+RUN sudo -u app bundle install
+# RUN bundle install
+
 
 # USER app
-RUN rvm-exec 2.7.3 gem install bundler:1.17.3
+# RUN rvm-exec 2.7.3 gem install bundler:1.17.3
 # RUN gem install mimemagic:0.3.10
-RUN rvm-exec 2.7.3 sudo -u app bundle install
+# RUN rvm-exec 2.7.3 sudo -u app bundle install
 # RUN bundle install
 # USER root
+
+ADD . $APP_DIR
+RUN chown -R app:app $APP_DIR
+
+WORKDIR $APP_DIR
 
 # Fix Postfix MTA
 RUN mkfifo /var/spool/postfix/public/pickup
@@ -69,5 +75,3 @@ ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Use baseimage-docker's init process.
-CMD ["/sbin/my_init"]

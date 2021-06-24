@@ -1,2 +1,2 @@
-* 8,9,10,11,12,13,14,15,16,17 * * * app cd /home/app/siphon && rvm-exec 2.7.3 rails runner AlephReformattingImporter.new.import! >log/cron_out.log 2>&1
+* 8,9,10,11,12,13,14,15,16,17 * * * app bash -lc 'rails runner AlephReformattingImporter.new.import! >log/cron_out.log 2>&1'
 # 0,30 8,9,10,11,12,13,14,15,16,17 * * * app cd /home/app/siphon && rvm-exec 2.7.3 rails runner AlephReformattingImporter.new.import! >log/cron_out.log 2>&1

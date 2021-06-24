@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'bigdecimal', "~> 1.4.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', "~> 4.2.0"
+gem 'rails', "5.2.1"
 # gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
-gem 'rake', "~> 12.3.2"
+# gem 'rake', "~> 12.3.2"
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
@@ -45,13 +45,13 @@ gem 'capistrano'
 gem 'exception_notification', "~> 4.0.0"
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -104,7 +104,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl', "~> 2.6.0"
   gem 'factory_girl_rails', "~> 1.7.0"
-  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  # gem 'spork-rails', :github => 'sporkrb/spork-rails'
 
   gem 'guard-rspec'
   gem 'guard-livereload'
