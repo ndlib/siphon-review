@@ -21,7 +21,7 @@ ENV HOST_NAME <%= ENV['HOST_NAME'] %>
 ENV SECRET_KEY_BASE <%= ENV['SECRET_KEY_BASE'] %>
 
 # 2.7.3 is configured as the default.
-RUN bash -lc 'rvm --default use ruby-2.7.3'
+RUN bash -lc 'rvm --default use ruby-2.6.7'
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
@@ -32,11 +32,13 @@ RUN ln -s /usr/share/zoneinfo/$TZ localtime
 # Set up folder, files and needed bundle gem objects
 WORKDIR /tmp
 ADD Gemfile /tmp/
-ADD Gemfile.lock /tmp/
+# ADD Gemfile.lock /tmp/
 
-RUN rvm-exec 2.7.3 gem install bundler:1.17.3
+RUN bash -lc 'gem install bundler:1.17.3'
+# RUN gem install bundler:1.17.3
 # RUN gem install mimemagic:0.3.10
-RUN rvm-exec 2.7.3 sudo -u app bundle install
+RUN bash -lc 'bundle install'
+# RUN sudo -u app bundle install
 
 # RUN gem install bundler:1.17.3
 # RUN sudo -u app bundle install
