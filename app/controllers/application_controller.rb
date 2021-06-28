@@ -7,8 +7,10 @@ class ApplicationController < ActionController::Base
 
   # Okta
   def login_user!
-    if !session[:netid]
-    #  redirect_to user_oktaoauth_omniauth_authorize_path
+    if ENV['HOST_NAME'] != "localhost"
+       if !session[:netid]
+         redirect_to user_oktaoauth_omniauth_authorize_path
+       end
     end
   end
 
