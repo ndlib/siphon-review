@@ -1,7 +1,7 @@
 FROM phusion/passenger-full
 
 # Update and install sudo, shared-mime-info to prevent mimemagic errors, postfix to prevent MTA errors
-RUN apt-get update && apt-get install -y sudo shared-mime-info postfix
+RUN apt-get update && apt-get install -y sudo shared-mime-info postfix libcurl4-openssl-dev
 
 # RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get install -y shared-mime-info postfix sudo
 
@@ -37,17 +37,12 @@ RUN ln -s /usr/share/zoneinfo/$TZ localtime
 WORKDIR /tmp
 ADD Gemfile /tmp/
 ADD Gemfile.lock /tmp/
-
-# Without this, I get an error when trying to run rails but with it the website won't run
-# RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-# RUN \curl -sSL https://get.rvm.io | bash -s stable --ruby
-
-# USER app
 RUN gem install bundler:1.17.3
-# RUN gem install mimemagic:0.3.10
 RUN sudo -u app bundle install
-# RUN bundle install
-# USER root
+
+# RUN chown -R app:app /usr/local/rvm/rubies/ruby-2.6.7/
+# RUN sudo -u app gem pristine --all
+
 
 ADD . $APP_DIR
 RUN chown -R app:app $APP_DIR

@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'bigdecimal', "~> 1.4.4"
+# gem 'bigdecimal', "~> 1.4.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "~> 4.2.0"
 # gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
-gem 'rake', "~> 12.3.2"
+# gem 'rake', "~> 12.3.2"
 
 #gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "hesburgh_infrastructure", github: "ndlib/hesburgh_infrastructure"
@@ -42,16 +42,16 @@ gem "state_machine"
 gem 'capistrano'
 
 
-gem 'exception_notification', "~> 4.0.0"
+gem 'exception_notification'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -62,13 +62,13 @@ gem "airbrake"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'jquery-datatables-rails', '1.11.2'
+gem 'jquery-datatables-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 gem 'virtus'
 
@@ -102,8 +102,8 @@ group :test do
   gem 'growl-rspec'
   gem 'rb-fsevent'
   gem 'database_cleaner'
-  gem 'factory_girl', "~> 2.6.0"
-  gem 'factory_girl_rails', "~> 1.7.0"
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
 
   gem 'guard-rspec'
