@@ -1,10 +1,22 @@
-FROM ruby:2.4
+FROM phusion/passenger-full
 
-RUN apt-get update && apt-get install -y nodejs cron && rm -rf /var/lib/apt/lists/*
+# Update and install sudo, shared-mime-info to prevent mimemagic errors, postfix to prevent MTA errors
+RUN apt-get update && apt-get install -y sudo shared-mime-info postfix libcurl4-openssl-dev
 
-ENV PASSENGER_RUN_ENV production
+# RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get install -y shared-mime-info postfix sudo
 
-ENV APP_DIR /siphon
+# Set correct environment variables.
+ENV HOME /home
+
+# Use baseimage-docker's init process.
+CMD ["/sbin/my_init"]
+
+# RUN bash -lc 'rvm install ruby-2.6.7'
+RUN bash -lc 'rvm --default use ruby-2.6.7'
+
+ENV PASSENGER_RUN_ENV development
+
+ENV APP_DIR /home/app/siphon
 ENV TZ America/Indiana/Indianapolis
 ENV DB_HOST <%= ENV['DB_HOST'] %>
 ENV DB_NAME <%= ENV['DB_NAME'] %>
@@ -21,12 +33,28 @@ ENV SECRET_KEY_BASE <%= ENV['SECRET_KEY_BASE'] %>
 RUN ln -s /usr/share/zoneinfo/$TZ localtime
 
 # Set up folder, files and needed bundle gem objects
-RUN mkdir $APP_DIR
+
+WORKDIR /tmp
+ADD Gemfile /tmp/
+ADD Gemfile.lock /tmp/
+RUN gem install bundler:1.17.3
+RUN sudo -u app bundle install
+
+# RUN chown -R app:app /usr/local/rvm/rubies/ruby-2.6.7/
+# RUN sudo -u app gem pristine --all
+
+
+ADD . $APP_DIR
+RUN chown -R app:app $APP_DIR
 WORKDIR $APP_DIR
-COPY Gemfile $APP_DIR
-COPY Gemfile.lock $APP_DIR
-RUN bundle install
-COPY . $APP_DIR
+
+# Fix Postfix MTA
+RUN mkfifo /var/spool/postfix/public/pickup
+
+# Enable nginx and passenger
+RUN rm -f /etc/service/nginx/down
+RUN rm /etc/nginx/sites-enabled/default
+ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
 
 # Copy Aleph cron file to the cron.d directory
 COPY import_aleph_crontab.txt /etc/cron.d/import_aleph_crontab.txt
@@ -37,13 +65,10 @@ RUN chmod 0644 /etc/cron.d/import_aleph_crontab.txt
 # Apply cron job
 RUN crontab /etc/cron.d/import_aleph_crontab.txt
  
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
-
 # Set up application to run
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
-CMD ["passenger", "start", "-e", "$PASSENGER_RUN_ENV"]
 
-# RUN rails bundle exec > runner "AlephReformattingImporter.new.import!"
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

@@ -2,8 +2,8 @@
 set -e
 
 echo "Create template files"
-mv "$APP_DIR/config/secrets.yml.template" "$APP_DIR/config/secrets.yml"
-mv "$APP_DIR/config/database.yml.template" "$APP_DIR/config/database.yml"
+cp "$APP_DIR/config/secrets.yml.template" "$APP_DIR/config/secrets.yml"
+cp "$APP_DIR/config/database.yml.template" "$APP_DIR/config/database.yml"
 
 echo "Modify config file for database"
 sed -i 's/{{ database_host }}/'"$DB_HOST"'/g' "$APP_DIR/config/database.yml"
@@ -20,14 +20,6 @@ sed -i 's/{{ secret_key_base }}/'"$SECRET_KEY_BASE"'/g' "$APP_DIR/config/secrets
 echo "Modify config file for HOST secrets"
 sed -i 's/{{ host_name }}/'"$HOST_NAME"'/g' "$APP_DIR/config/secrets.yml"
 
-echo "Start cron"
-cron
-
-echo "View crontab entry"
-crontab -l
-
-echo "Show process running"
-ps -aux
-
 echo "Start Passenger Service as $PASSENGER_RUN_ENV"
-exec passenger start -e $PASSENGER_RUN_ENV
+exec /sbin/my_init
+
