@@ -1,1 +1,1 @@
-0,30 8,9,10,11,12,13,14,15,16,17 * * * app bash -lc 'rails runner AlephReformattingImporter.new.import!'
+0,30 8,9,10,11,12,13,14,15,16,17 * * * app bash -lc 'rails runner AlephReformattingImporter.new.import! > /var/log/cron.log 2>&1'
